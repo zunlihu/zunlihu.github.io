@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-22T15:16:31+08:00">
                 2017-12-22
@@ -313,8 +313,10 @@
 <p>如果显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO Hexo is running at http://0.0.0.0:4000/.</span><br></pre></td></tr></table></figure></p>
 <p>，则说明成功，可自行访问<a href="http://0.0.0.0:4000/查看网页效果。" target="_blank" rel="noopener">http://0.0.0.0:4000/查看网页效果。</a></p>
 <h3 id="将网站发布到GitHub的同名repository中"><a href="#将网站发布到GitHub的同名repository中" class="headerlink" title="将网站发布到GitHub的同名repository中"></a>将网站发布到GitHub的同名repository中</h3><p>注意：此操作在已有GitHub账号前提下进行。并请自行配置SSH和新建repository（MyGitHub.github.io)。</p>
-<p>打开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\SoftwareFiles\hexo</span><br></pre></td></tr></table></figure></p>
-<p>文件夹中的_config.yml文件，找到</p>
+<p>在D:\SoftwareFiles\hexo下输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>此时，可以看到在D:\SoftwareFiles\hexo下出现.deploy_git。</p>
+<p>打开D:\SoftwareFiles\hexo文件夹中的_config.yml文件，找到</p>
 <pre><code># Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:   
@@ -322,7 +324,9 @@ deploy:
   repo: git@github.com:MyGithub/MyGithub.github.io  
   branch: master
 </code></pre><p>注： (1) 其中MyGitHub替换成你的Github账户用户名; (2) 注意在yml文件中，:后面都是要带空格的</p>
-<p>此时，可以访问<a href="http://MyGitHub.github.io查看你的博客页面。" target="_blank" rel="noopener">http://MyGitHub.github.io查看你的博客页面。</a></p>
+<p>此时，可以访问<a href="http://MyGitHub.github.io查看你的博客页面。" target="_blank" rel="noopener">http://MyGitHub.github.io查看你的博客页面。</a><br>若无法访问，通过以下命令更新GitHub网页。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>注意：若无法git，则运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
 <h2 id="Hexo配置及发表文章"><a href="#Hexo配置及发表文章" class="headerlink" title="Hexo配置及发表文章"></a>Hexo配置及发表文章</h2><h3 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置"></a>站点配置</h3><p>在D:\SoftwareFiles\hexo文件夹中找到_config.yml文件，找到以下部分内容，并修改成自己的内容。</p>
 <pre><code># Site
 title: 网站标题
@@ -346,7 +350,18 @@ theme: next
 </code></pre><h3 id="本地验证是否可用"><a href="#本地验证是否可用" class="headerlink" title="本地验证是否可用"></a>本地验证是否可用</h3><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br></pre></td></tr></table></figure></p>
 <p>访问<a href="http://0.0.0.0:4000/" target="_blank" rel="noopener">本地网站</a>，确认网站主题是否切换为Next。</p>
 <h3 id="更新github"><a href="#更新github" class="headerlink" title="更新github"></a>更新github</h3><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
-<h3 id="发表新文章"><a href="#发表新文章" class="headerlink" title="发表新文章"></a>发表新文章</h3>
+<h3 id="发表新文章"><a href="#发表新文章" class="headerlink" title="发表新文章"></a>发表新文章</h3><p>在D:\SoftwareFiles\hexo下输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;name of the new post&quot;</span><br></pre></td></tr></table></figure></p>
+<p>此时，在source文件夹下的_post文件夹下，可以看到新建的一个名为name of the new post.md的文件，打开该文件可以看到如下内容。</p>
+<pre><code>title: name of the new post
+date: 2015-12-09 22:55:25
+tags:
+---
+</code></pre><p>可以给文章贴上相应的tags，如有多个则按照如下格式</p>
+<pre><code>[tag1, tag2, tag3, ...]
+</code></pre><p>在—下方添加正文内容即可，注意需要使用markdown语法进行书写，此处使用markdownpad2编辑。</p>
+<p>文章撰写完成后保存，在Git Bash下打开D:\SoftwareFiles\hexo，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
+<p>即可生成新网站，并且同步Github上的网站内容。</p>
+
           
         
       
@@ -423,7 +438,7 @@ theme: next
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-22T15:05:33+08:00">
                 2017-12-22
@@ -556,7 +571,7 @@ theme: next
                 <a href="/archives/">
               
                   <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -569,7 +584,7 @@ theme: next
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -617,7 +632,7 @@ theme: next
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
