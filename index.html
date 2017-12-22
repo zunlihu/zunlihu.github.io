@@ -299,7 +299,47 @@
       
         
           
-            
+            <h1 id="Hexo-GitHub-搭建个人博客"><a href="#Hexo-GitHub-搭建个人博客" class="headerlink" title="Hexo + GitHub 搭建个人博客"></a>Hexo + GitHub 搭建个人博客</h1><p>Hexo是一个快速、简洁且高效的博客框架，而Github是一个免费的代码托管工具，利用Github Pages可以免费创建一个静态网站。下面将介绍如何使用Hexo和Github，在win10环境下搭建一个个人博客。</p>
+<h2 id="安装和配置Hexo及GitHub"><a href="#安装和配置Hexo及GitHub" class="headerlink" title="安装和配置Hexo及GitHub"></a>安装和配置Hexo及GitHub</h2><p>注意：安装Hexo前，需要安装Node.js和Git。</p>
+<p>安装好以上程序后，打开Git Bash或者cmd,这里采用Git Bash。</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>以管理员身份运行Git Bash,输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
+<p>即可完成Hexo的安装。</p>
+<h3 id="使用Hexo进行本地建站"><a href="#使用Hexo进行本地建站" class="headerlink" title="使用Hexo进行本地建站"></a>使用Hexo进行本地建站</h3><p>选择一个本地的文件夹（建议不要放在系统盘），如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\SoftwareFiles\hexo</span><br></pre></td></tr></table></figure></p>
+<p>，在Git Bash 命令行输入以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd D:\SoftwareFiles\\hexo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>即可完成Hexo的初始化，并安装成功npm。此时，在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\SoftwareFiles\hexo</span><br></pre></td></tr></table></figure></p>
+<p>文件夹下可看到初始化后的_config.yml，package.json,source,themes等文件目录。</p>
+<p>为了测试<a href="http://0.0.0.0:4000/" target="_blank" rel="noopener">本地建站</a>是否成功，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
+<p>如果显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO Hexo is running at http://0.0.0.0:4000/.</span><br></pre></td></tr></table></figure></p>
+<p>，则说明成功，可自行访问<a href="http://0.0.0.0:4000/查看网页效果。" target="_blank" rel="noopener">http://0.0.0.0:4000/查看网页效果。</a></p>
+<h3 id="将网站发布到GitHub的同名repository中"><a href="#将网站发布到GitHub的同名repository中" class="headerlink" title="将网站发布到GitHub的同名repository中"></a>将网站发布到GitHub的同名repository中</h3><p>注意：此操作在已有GitHub账号前提下进行。并请自行配置SSH和新建repository（MyGitHub.github.io)。</p>
+<p>打开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\SoftwareFiles\hexo</span><br></pre></td></tr></table></figure></p>
+<p>文件夹中的_config.yml文件，找到</p>
+<pre><code># Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:   
+  type: git  
+  repo: git@github.com:MyGithub/MyGithub.github.io  
+  branch: master
+</code></pre><p>注： (1) 其中MyGitHub替换成你的Github账户用户名; (2) 注意在yml文件中，:后面都是要带空格的</p>
+<p>此时，可以访问<a href="http://MyGitHub.github.io查看你的博客页面。" target="_blank" rel="noopener">http://MyGitHub.github.io查看你的博客页面。</a></p>
+<p>##选择Hexo主题及发表文章</p>
+<h3 id="next主题配置"><a href="#next主题配置" class="headerlink" title="next主题配置"></a>next主题配置</h3><p>由于个人喜好，这里选择简洁的next主题。</p>
+<h4 id="下载next主题"><a href="#下载next主题" class="headerlink" title="下载next主题"></a>下载next主题</h4><p>在<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\SoftwareFiles\hexo</span><br></pre></td></tr></table></figure></p>
+<p>下输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
+<p>完成下载。</p>
+<h3 id="修改网站的主题为next"><a href="#修改网站的主题为next" class="headerlink" title="修改网站的主题为next"></a>修改网站的主题为next</h3><p>打开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\SoftwareFiles\hexo</span><br></pre></td></tr></table></figure></p>
+<p>下的_config.yml文件，找到以下内容，将theme修改为next。</p>
+<pre><code># Extensions
+## Plugins: http://hexo.io/plugins/
+## Themes: http://hexo.io/themes/
+theme: next
+</code></pre><h3 id="本地验证是否可用"><a href="#本地验证是否可用" class="headerlink" title="本地验证是否可用"></a>本地验证是否可用</h3><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br></pre></td></tr></table></figure></p>
+<p>访问<a href="http://0.0.0.0:4000/" target="_blank" rel="noopener">本地网站</a>，确认网站主题是否切换为Next。</p>
+<h3 id="更新github"><a href="#更新github" class="headerlink" title="更新github"></a>更新github</h3><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
+<h3 id="发表新文章"><a href="#发表新文章" class="headerlink" title="发表新文章"></a>发表新文章</h3>
           
         
       
@@ -516,6 +556,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
             
 
           </nav>
