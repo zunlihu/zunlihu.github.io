@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android Studio," />
+  <meta name="keywords" content="deep learning," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="由于项目需要，最近需要做安卓开发，因此开始了Android Studio的小白之旅。 Anndroid Studio 2.3.2 打开project，第一个要面对的就是Proxy Settings配置代理，当然也可以通过File-&amp;gt;Settings-&amp;gt;Apperarance&amp;amp;Behavior-&amp;gt;System Settings-&amp;gt;HTTP Proxy打开配置。 这里主">
-<meta name="keywords" content="Android Studio">
+<meta name="description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据预处理数据预处理的基本方式有数据归一化和白化。 数据归一化数据归一化常用的方法有：  简单缩放  在简单缩放中，我们的目的是通过对">
+<meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Stuio Proxy Settings">
-<meta property="og:url" content="http://yoursite.com/2017/12/23/Android-Stuio-Proxy-Settings/index.html">
+<meta property="og:title" content="深度学习中的数据预处理">
+<meta property="og:url" content="http://yoursite.com/2017/12/26/深度学习中的数据预处理/index.html">
 <meta property="og:site_name" content="糊糊">
-<meta property="og:description" content="由于项目需要，最近需要做安卓开发，因此开始了Android Studio的小白之旅。 Anndroid Studio 2.3.2 打开project，第一个要面对的就是Proxy Settings配置代理，当然也可以通过File-&amp;gt;Settings-&amp;gt;Apperarance&amp;amp;Behavior-&amp;gt;System Settings-&amp;gt;HTTP Proxy打开配置。 这里主">
+<meta property="og:description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据预处理数据预处理的基本方式有数据归一化和白化。 数据归一化数据归一化常用的方法有：  简单缩放  在简单缩放中，我们的目的是通过对">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-23T03:12:30.927Z">
+<meta property="og:updated_time" content="2017-12-26T13:41:53.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Stuio Proxy Settings">
-<meta name="twitter:description" content="由于项目需要，最近需要做安卓开发，因此开始了Android Studio的小白之旅。 Anndroid Studio 2.3.2 打开project，第一个要面对的就是Proxy Settings配置代理，当然也可以通过File-&amp;gt;Settings-&amp;gt;Apperarance&amp;amp;Behavior-&amp;gt;System Settings-&amp;gt;HTTP Proxy打开配置。 这里主">
+<meta name="twitter:title" content="深度学习中的数据预处理">
+<meta name="twitter:description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据预处理数据预处理的基本方式有数据归一化和白化。 数据归一化数据归一化常用的方法有：  简单缩放  在简单缩放中，我们的目的是通过对">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/23/Android-Stuio-Proxy-Settings/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/26/深度学习中的数据预处理/"/>
 
 
 
 
 
-  <title>Android Stuio Proxy Settings | 糊糊</title>
+  <title>深度学习中的数据预处理 | 糊糊</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/23/Android-Stuio-Proxy-Settings/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/深度学习中的数据预处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zunli Hu">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Stuio Proxy Settings</h1>
+          <h1 class="post-title" itemprop="name headline">深度学习中的数据预处理</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-23T10:41:53+08:00">
-                2017-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-26T21:04:34+08:00">
+                2017-12-26
               </time>
             
 
@@ -300,28 +300,22 @@
       
 
       
-        <p>由于项目需要，最近需要做安卓开发，因此开始了Android Studio的小白之旅。</p>
-<p>Anndroid Studio 2.3.2</p>
-<p>打开project，第一个要面对的就是Proxy Settings配置代理，当然也可以通过File-&gt;Settings-&gt;Apperarance&amp;Behavior-&gt;System Settings-&gt;HTTP Proxy打开配置。</p>
-<p>这里主要说明两种方法。</p>
+        <p>从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。</p>
+<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a><a href="http://ufldl.stanford.edu/wiki/index.php/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86" target="_blank" rel="noopener">数据预处理</a></h1><p>数据预处理的基本方式有数据归一化和<a href="http://deeplearning.stanford.edu/wiki/index.php/Whitening" target="_blank" rel="noopener">白化</a>。</p>
+<h2 id="数据归一化"><a href="#数据归一化" class="headerlink" title="数据归一化"></a>数据归一化</h2><p>数据归一化常用的方法有：</p>
 <ol>
-<li>HTTP</li>
+<li>简单缩放</li>
 </ol>
-<ul>
-<li><p>Host name: mirrors.neusoft.edu.cn</p>
-</li>
-<li><p>Port num: 80</p>
-</li>
-</ul>
+<p>在简单缩放中，我们的目的是通过对数据的每一个维度的值进行重新调节（这些维度可能是相互独立的），使得最终的数据向量落在 [0,1]或[ − 1,1] 的区间内（根据数据情况而定）。这对后续的处理十分重要，因为很多默认参数（如 PCA-白化中的 epsilon）都假定数据已被缩放到合理区间。例如，在sparse auto-encoder中，由于网络的输出和输入是近似相等的，而隐含层和输出层神经元通常采用的是sigmoid函数作为激活函数，该函数值域为[0,1]，因此为了保证输出等于输入，通常需要将输入缩放至[0,1]这个范围，然后再进行训练。</p>
+<p>例子:在处理自然图像时，我们获得的像素值在 [0,255] 区间中，常用的处理是将这些像素值除以 255，使它们缩放到 [0,1] 中。</p>
 <ol>
-<li>SOCKS</li>
+<li>逐样本均值消减</li>
 </ol>
-<ul>
-<li><p>Host name: 127.0.0.1</p>
-</li>
-<li><p>Port num: 1080</p>
-</li>
-</ul>
+<p>图像处理中，图像的每个像素信息可以看作是一种特征，对每个特征减去平均值来中心化数据是非常重要的，这种归一化处理方式被称作“中心式归一化”（mean normalization)。</p>
+<p>卷积神经网络中的数据预处理方式通常是计算<strong>训练集图像像素均值</strong></p>
+<ol>
+<li>特征标准化</li>
+</ol>
 
       
     </div>
@@ -339,7 +333,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
+            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
           
         </div>
       
@@ -352,8 +346,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/22/Hexo-GitHub搭建个人博客/" rel="next" title="Hexo + GitHub搭建个人博客">
-                <i class="fa fa-chevron-left"></i> Hexo + GitHub搭建个人博客
+              <a href="/2017/12/23/Android-Stuio-Proxy-Settings/" rel="next" title="Android Stuio Proxy Settings">
+                <i class="fa fa-chevron-left"></i> Android Stuio Proxy Settings
               </a>
             
           </div>
@@ -361,10 +355,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/26/深度学习中的数据预处理/" rel="prev" title="深度学习中的数据预处理">
-                深度学习中的数据预处理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -416,8 +406,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -470,6 +469,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据预处理"><span class="nav-number">1.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据归一化"><span class="nav-number">1.1.</span> <span class="nav-text">数据归一化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

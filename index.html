@@ -229,6 +229,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/深度学习中的数据预处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zunli Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="糊糊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/26/深度学习中的数据预处理/" itemprop="url">深度学习中的数据预处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-26T21:04:34+08:00">
+                2017-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。</p>
+<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a><a href="http://ufldl.stanford.edu/wiki/index.php/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86" target="_blank" rel="noopener">数据预处理</a></h1><p>数据预处理的基本方式有数据归一化和<a href="http://deeplearning.stanford.edu/wiki/index.php/Whitening" target="_blank" rel="noopener">白化</a>。</p>
+<h2 id="数据归一化"><a href="#数据归一化" class="headerlink" title="数据归一化"></a>数据归一化</h2><p>数据归一化常用的方法有：</p>
+<ol>
+<li>简单缩放</li>
+</ol>
+<p>在简单缩放中，我们的目的是通过对数据的每一个维度的值进行重新调节（这些维度可能是相互独立的），使得最终的数据向量落在 [0,1]或[ − 1,1] 的区间内（根据数据情况而定）。这对后续的处理十分重要，因为很多默认参数（如 PCA-白化中的 epsilon）都假定数据已被缩放到合理区间。例如，在sparse auto-encoder中，由于网络的输出和输入是近似相等的，而隐含层和输出层神经元通常采用的是sigmoid函数作为激活函数，该函数值域为[0,1]，因此为了保证输出等于输入，通常需要将输入缩放至[0,1]这个范围，然后再进行训练。</p>
+<p>例子:在处理自然图像时，我们获得的像素值在 [0,255] 区间中，常用的处理是将这些像素值除以 255，使它们缩放到 [0,1] 中。</p>
+<ol>
+<li>逐样本均值消减</li>
+</ol>
+<p>图像处理中，图像的每个像素信息可以看作是一种特征，对每个特征减去平均值来中心化数据是非常重要的，这种归一化处理方式被称作“中心式归一化”（mean normalization)。</p>
+<p>卷积神经网络中的数据预处理方式通常是计算<strong>训练集图像像素均值</strong></p>
+<ol>
+<li>特征标准化</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/23/Android-Stuio-Proxy-Settings/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -584,7 +719,7 @@ tags:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -597,7 +732,7 @@ tags:
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
