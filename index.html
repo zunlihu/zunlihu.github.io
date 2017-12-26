@@ -319,7 +319,8 @@
 <li>特征标准化（Feature Standardization)</li>
 </ol>
 <p>特征标准化指的是（独立地）使得数据的每一个维度具有零均值和单位方差。这是归一化中最常见的方法并被广泛地使用（例如，在使用支持向量机（SVM）时，特征标准化常被建议用作预处理的一部分）。在实际应用中，特征标准化的具体做法是：首先计算每一个维度上数据的均值（使用全体数据计算），之后在每一个维度上都减去该均值。下一步便是在数据的每一维度上除以该维度上数据的标准差。</p>
-<h2 id="白化"><a href="#白化" class="headerlink" title="白化"></a><a href="http://deeplearning.stanford.edu/wiki/index.php/Whitening" target="_blank" rel="noopener">白化</a></h2><p>通过白化处理，数据具有以下特点：</p>
+<h2 id="白化"><a href="#白化" class="headerlink" title="白化"></a><a href="http://deeplearning.stanford.edu/wiki/index.php/Whitening" target="_blank" rel="noopener">白化</a></h2><p>If we are training on images, the raw input is redundant, since adjacent pixel values are highly correlated. The goal of whitening is to make the input less redundant; more formally, our desiderata are that our learning algorithms sees a training input where (i) the features are less correlated with each other, and (ii) the features all have the same variance.</p>
+<p>通过白化处理，数据具有以下特点：</p>
 <ul>
 <li>特征之间相关性较低（协方差越小，相关性越低）</li>
 <li>所有特征具有相同的方差</li>
@@ -330,8 +331,12 @@
 </ol>
 <p>每个样本均值消减，然后PCA/ZCA白化。</p>
 <ol>
-<li>彩色图像<br>数据特征缩放，使像素值位于[0,1]区间，再PCA/ZCA 白化。在PCA之前需要对特征进行分量均值归零化。</li>
+<li>彩色图像</li>
 </ol>
+<p>数据特征缩放，使像素值位于[0,1]区间，再PCA/ZCA 白化。在PCA之前需要对特征进行分量均值归零化。</p>
+<h1 id="数据Shuffle"><a href="#数据Shuffle" class="headerlink" title="数据Shuffle"></a>数据Shuffle</h1><p>信息论中曾提到：“从不相似的事件中学习总是比从相似事件中学习更具信息量。”</p>
+<p>在训练神经网络时，尽管训练数据固定，但是由于采用了随机批处理（mini-batch)的训练机智，因此我们可在模型每轮（epoch）训练进行前将训练数据集随机打乱（shuffle)，确保模型不同轮数相同批次“看到”的数据是不同的。</p>
+<p>这样的处理不仅会提高模型收敛速率，同时，相对固定次序训练的模型，此操作会略微提升模型在测试集上的预测结果。</p>
 
           
         
