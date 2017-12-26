@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据预处理数据预处理的基本方式有数据归一化和白化。 数据归一化数据归一化常用的方法有：  简单缩放(Simple Rescaling)">
+<meta name="description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据扩充不平衡样本的处理数据预处理在有了充足的数据样本以后，通过对图像的预处理可以帮助我们大大提升模型性能。 数据预处理的基本方式有数">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度学习中的数据预处理">
 <meta property="og:url" content="http://yoursite.com/2017/12/26/深度学习中的数据预处理/index.html">
 <meta property="og:site_name" content="糊糊">
-<meta property="og:description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据预处理数据预处理的基本方式有数据归一化和白化。 数据归一化数据归一化常用的方法有：  简单缩放(Simple Rescaling)">
+<meta property="og:description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据扩充不平衡样本的处理数据预处理在有了充足的数据样本以后，通过对图像的预处理可以帮助我们大大提升模型性能。 数据预处理的基本方式有数">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-26T14:40:27.905Z">
+<meta property="og:updated_time" content="2017-12-26T14:44:53.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习中的数据预处理">
-<meta name="twitter:description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据预处理数据预处理的基本方式有数据归一化和白化。 数据归一化数据归一化常用的方法有：  简单缩放(Simple Rescaling)">
+<meta name="twitter:description" content="从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。 数据扩充不平衡样本的处理数据预处理在有了充足的数据样本以后，通过对图像的预处理可以帮助我们大大提升模型性能。 数据预处理的基本方式有数">
 
 
 
@@ -301,7 +301,8 @@
 
       
         <p>从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。</p>
-<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a><a href="http://ufldl.stanford.edu/wiki/index.php/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86" target="_blank" rel="noopener">数据预处理</a></h1><p>数据预处理的基本方式有数据归一化和<a href="http://deeplearning.stanford.edu/wiki/index.php/Whitening" target="_blank" rel="noopener">白化</a>。</p>
+<h1 id="数据扩充"><a href="#数据扩充" class="headerlink" title="数据扩充"></a>数据扩充</h1><h1 id="不平衡样本的处理"><a href="#不平衡样本的处理" class="headerlink" title="不平衡样本的处理"></a>不平衡样本的处理</h1><h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a><a href="http://ufldl.stanford.edu/wiki/index.php/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86" target="_blank" rel="noopener">数据预处理</a></h1><p>在有了充足的数据样本以后，通过对图像的预处理可以帮助我们大大提升模型性能。</p>
+<p>数据预处理的基本方式有数据归一化和<a href="http://deeplearning.stanford.edu/wiki/index.php/Whitening" target="_blank" rel="noopener">白化</a>。</p>
 <h2 id="数据归一化"><a href="#数据归一化" class="headerlink" title="数据归一化"></a>数据归一化</h2><p>数据归一化常用的方法有：</p>
 <ol>
 <li>简单缩放(Simple Rescaling)</li>
@@ -500,7 +501,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据预处理"><span class="nav-number">1.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据归一化"><span class="nav-number">1.1.</span> <span class="nav-text">数据归一化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#白化"><span class="nav-number">1.2.</span> <span class="nav-text">白化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PCA-白化"><span class="nav-number">1.2.1.</span> <span class="nav-text">PCA 白化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据预处理标准流程"><span class="nav-number">1.2.2.</span> <span class="nav-text">数据预处理标准流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据Shuffle"><span class="nav-number">2.</span> <span class="nav-text">数据Shuffle</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据扩充"><span class="nav-number">1.</span> <span class="nav-text">数据扩充</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不平衡样本的处理"><span class="nav-number">2.</span> <span class="nav-text">不平衡样本的处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据预处理"><span class="nav-number">3.</span> <span class="nav-text">数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据归一化"><span class="nav-number">3.1.</span> <span class="nav-text">数据归一化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#白化"><span class="nav-number">3.2.</span> <span class="nav-text">白化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PCA-白化"><span class="nav-number">3.2.1.</span> <span class="nav-text">PCA 白化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据预处理标准流程"><span class="nav-number">3.2.2.</span> <span class="nav-text">数据预处理标准流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据Shuffle"><span class="nav-number">4.</span> <span class="nav-text">数据Shuffle</span></a></li></ol></div>
             
 
           </div>
