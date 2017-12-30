@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="糊糊">
 <meta property="og:description" content="什么是多态?当想不同的人发出同样的一个命令时，不同的人可能有不同的反应。这就是多态性。 有了多态性，相当于对象有了主观能动性。对对象的使用者而言，使用起来就方便了。特别是当被管理对象的数量和类型增加时，管理者的工作量并不增加。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-30T08:15:28.626Z">
+<meta property="og:updated_time" content="2017-12-30T08:18:25.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++中的多态">
 <meta name="twitter:description" content="什么是多态?当想不同的人发出同样的一个命令时，不同的人可能有不同的反应。这就是多态性。 有了多态性，相当于对象有了主观能动性。对对象的使用者而言，使用起来就方便了。特别是当被管理对象的数量和类型增加时，管理者的工作量并不增加。">
@@ -300,7 +300,7 @@
       
 
       
-        <h2 id="什么是多态"><a href="#什么是多态" class="headerlink" title="什么是多态?"></a>什么是多态?</h2><p>当想不同的人发出同样的一个命令时，不同的人可能有不同的反应。这就是多态性。</p>
+        <h1 id="什么是多态"><a href="#什么是多态" class="headerlink" title="什么是多态?"></a>什么是多态?</h1><p>当想不同的人发出同样的一个命令时，不同的人可能有不同的反应。这就是多态性。</p>
 <p>有了多态性，相当于对象有了主观能动性。对对象的使用者而言，使用起来就方便了。特别是当被管理对象的数量和类型增加时，管理者的工作量并不增加。</p>
 <a id="more"></a>
 <ul>
@@ -382,7 +382,7 @@ bptr-&gt;func();//调用的是child2中的func()
 c2.func();   //调用的是child2中的func()
 bptr-&gt;my();  //调用的是派生类对象中的基类部分，也就是base中的my()
 c2.my();     //调用的是派生类对象中的成员函数，也就是child2中的my()
-</code></pre><h2 id="虚函数和纯虚函数"><a href="#虚函数和纯虚函数" class="headerlink" title="虚函数和纯虚函数"></a>虚函数和纯虚函数</h2><ul>
+</code></pre><h1 id="虚函数和纯虚函数"><a href="#虚函数和纯虚函数" class="headerlink" title="虚函数和纯虚函数"></a>虚函数和纯虚函数</h1><ul>
 <li><font color="red">应该考虑：</font> 对成员函数的调用是通过对象名还是通过基类指针或者基类引用去访问。如果是后两者，则应当声明为虚函数。</li>
 <li>虚函数：如果一个类中定义了虚函数virtual，那么这个虚函数是被实现的，其作用就是为了让该虚函数在这个类的的派生类中被覆盖，被实现为不同的功能，从而结合基类指针以实现动态多态性。</li>
 <li><p>纯虚函数：有时，在定义一个虚函数时，并不定义其函数体，即它的函数体是空的，它的作用只是保留一个虚函数名，它关注的是接口的统一性，其具体的功能实现由它的派生类完成。</p>
@@ -401,14 +401,14 @@ virtual float area（float a，float b ) = 0；
 <li><p>使用虚函数，系统要有一定的空间开销。当一个类中含有虚函数时，编译系统会为它构造一个虚函数指针vptr(4字节），同时这个虚函数指针指向一个虚函数表vtable，虚函数表示一个指针数组，存放的是该类中的每个虚函数的入口地址。（查表是高效的，因此多态性是高效的。）</p>
 </li>
 </ul>
-<h2 id="虚析构函数的作用"><a href="#虚析构函数的作用" class="headerlink" title="虚析构函数的作用"></a>虚析构函数的作用</h2><p>构造函数不能使虚函数，但是析构函数可以是虚函数，而且最好是虚函数。</p>
+<h1 id="虚析构函数的作用"><a href="#虚析构函数的作用" class="headerlink" title="虚析构函数的作用"></a>虚析构函数的作用</h1><p>构造函数不能使虚函数，但是析构函数可以是虚函数，而且最好是虚函数。</p>
 <ul>
 <li>当派生类的对象从内存中撤销时，一般先调用派生类的析构函数释放该对象中的派生类部分，再调用基类的析构函数释放该对象中的基类部分，从而能够完整的释放该对象内存。</li>
 <li>但是，当用基类指针指向了一个派生类对象，即 <code>base *bptr = new child；</code>此时用<code>delete bptr；</code>来撤销bptr 指向的动态存储空间时，只会执行基类的析构函数来释放该堆内存中的基类部分，但是并不会执行派生类的析构函数来释放该堆内存中的派生类部分。此时，就会造成<strong>内存泄漏现象</strong>。</li>
 <li>为了避免此类现象发生，我们将基类的析构函数声明为虚析构函数，这样就解决了上述问题（即先调用派生类的析构函数释放该动态空间中的派生类部分，再调用基类的析构函数释放该动态空间中的基类部分，从而能够完整的释放该堆内存）。</li>
 <li>如果将基类的析构函数声明为虚析构函数，那么该基类的所有派生类的析构函数都自动成为虚析构函数。</li>
 </ul>
-<h2 id="类的成员函数的重载、覆盖（重写）、隐藏（重定义）"><a href="#类的成员函数的重载、覆盖（重写）、隐藏（重定义）" class="headerlink" title="类的成员函数的重载、覆盖（重写）、隐藏（重定义）"></a>类的成员函数的重载、覆盖（重写）、隐藏（重定义）</h2><p><strong>函数重载</strong>：重载函数通常用来命名一组功能相似的函数。</p>
+<h1 id="类的成员函数的重载、覆盖（重写）、隐藏（重定义）"><a href="#类的成员函数的重载、覆盖（重写）、隐藏（重定义）" class="headerlink" title="类的成员函数的重载、覆盖（重写）、隐藏（重定义）"></a>类的成员函数的重载、覆盖（重写）、隐藏（重定义）</h1><p><strong>函数重载</strong>：重载函数通常用来命名一组功能相似的函数。</p>
 <ol>
 <li>两个函数要在相同的类域 </li>
 <li>两个函数的名称相同 </li>
@@ -591,7 +591,7 @@ virtual float area（float a，float b ) = 0；
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是多态"><span class="nav-number">1.</span> <span class="nav-text">什么是多态?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的作用"><span class="nav-number"></span> <span class="nav-text">多态的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的分类"><span class="nav-number"></span> <span class="nav-text">多态的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-中多态的实现"><span class="nav-number"></span> <span class="nav-text">C++中多态的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚函数和纯虚函数"><span class="nav-number">1.</span> <span class="nav-text">虚函数和纯虚函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚析构函数的作用"><span class="nav-number">2.</span> <span class="nav-text">虚析构函数的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的成员函数的重载、覆盖（重写）、隐藏（重定义）"><span class="nav-number">3.</span> <span class="nav-text">类的成员函数的重载、覆盖（重写）、隐藏（重定义）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是多态"><span class="nav-number">1.</span> <span class="nav-text">什么是多态?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的作用"><span class="nav-number">2.</span> <span class="nav-text">多态的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的分类"><span class="nav-number">3.</span> <span class="nav-text">多态的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-中多态的实现"><span class="nav-number">4.</span> <span class="nav-text">C++中多态的实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚函数和纯虚函数"><span class="nav-number">5.</span> <span class="nav-text">虚函数和纯虚函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚析构函数的作用"><span class="nav-number">6.</span> <span class="nav-text">虚析构函数的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类的成员函数的重载、覆盖（重写）、隐藏（重定义）"><span class="nav-number">7.</span> <span class="nav-text">类的成员函数的重载、覆盖（重写）、隐藏（重定义）</span></a></li></ol></div>
             
 
           </div>
