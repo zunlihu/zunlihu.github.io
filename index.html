@@ -424,57 +424,14 @@
 
       
         
-          
-            <p>从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。</p>
-<h1 id="数据扩充-Data-Augmentation"><a href="#数据扩充-Data-Augmentation" class="headerlink" title="数据扩充(Data Augmentation)"></a>数据扩充(Data Augmentation)</h1><p>深度卷积网络自身拥有请打的表达能力，网络本身需要大量甚至海量数据来驱动模型训练，否则便有极大可能陷入过拟合的窘境。有效的数据扩充（data augmentation)不仅能扩充训练样本数量，还能增加训练样本的多样性，一方面可以避免过拟合，另一方面又会带来模型性能的提升。</p>
-<ul>
-<li>Horizontal/Vertical Flip: 水平/垂直翻转</li>
-<li>Random Crop: 随机抠取操作一般用较大的正方形在原图的随机位置处抠取图像块，每张图像随机抠取的次数决定了数据集扩充的倍数</li>
-<li>Scaling: 尺度变换，一般是讲图像分辨率变为原图的0.8、0.9</li>
-<li><p>Rotating: 旋转</p>
-</li>
-<li><p>Color Jittering</p>
-</li>
-</ul>
-<h1 id="不平衡样本的处理"><a href="#不平衡样本的处理" class="headerlink" title="不平衡样本的处理"></a>不平衡样本的处理</h1><h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a><a href="http://ufldl.stanford.edu/wiki/index.php/%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86" target="_blank" rel="noopener">数据预处理</a></h1><p>在有了充足的数据样本以后，通过对图像的预处理可以帮助我们大大提升模型性能。</p>
-<p>数据预处理的基本方式有数据归一化和<a href="http://deeplearning.stanford.edu/wiki/index.php/Whitening" target="_blank" rel="noopener">白化</a>。</p>
-<h2 id="数据归一化"><a href="#数据归一化" class="headerlink" title="数据归一化"></a>数据归一化</h2><p>数据归一化常用的方法有：</p>
-<ol>
-<li>简单缩放(Simple Rescaling)</li>
-</ol>
-<p>在简单缩放中，我们的目的是通过对数据的每一个维度的值进行重新调节（这些维度可能是相互独立的），使得最终的数据向量落在 [0,1]或[ − 1,1] 的区间内（根据数据情况而定）。这对后续的处理十分重要，因为很多默认参数（如 PCA-白化中的 epsilon）都假定数据已被缩放到合理区间。例如，在sparse auto-encoder中，由于网络的输出和输入是近似相等的，而隐含层和输出层神经元通常采用的是sigmoid函数作为激活函数，该函数值域为[0,1]，因此为了保证输出等于输入，通常需要将输入缩放至[0,1]这个范围，然后再进行训练。</p>
-<p>例子:在处理自然图像时，我们获得的像素值在 [0,255] 区间中，常用的处理是将这些像素值除以 255，使它们缩放到 [0,1] 中。</p>
-<ol>
-<li>逐样本均值消减(Per-sample mean subtraction)</li>
-</ol>
-<p>图像处理中，图像的每个像素信息可以看作是一种特征，对每个特征减去平均值来中心化数据是非常重要的，这种归一化处理方式被称作“中心式归一化”（mean normalization)。</p>
-<p>卷积神经网络中的数据预处理方式通常是计算<strong>训练集图像像素均值</strong>,之后在处理训练集、验证集和测试集图像时分别减去该均值。</p>
-<p>减均值的原理是，默认自然图像是一类平稳的数据分布（即数据每一个维度的统计都服从相同分布），此时在每个样本上减去数据的统计平均值（逐样本消减）可以移除共同部分，凸显个体差异。</p>
-<p>注意：1. 该均值仅针对划分后的训练集计算，不可直接在未划分的所有图像上计算均值。2.该方法通常用于灰度图像，因彩色不同通道中像素并不都存在平稳特性。</p>
-<ol>
-<li>特征标准化（Feature Standardization)</li>
-</ol>
-<p>特征标准化指的是（独立地）使得数据的每一个维度具有零均值和单位方差。这是归一化中最常见的方法并被广泛地使用（例如，在使用支持向量机（SVM）时，特征标准化常被建议用作预处理的一部分）。在实际应用中，特征标准化的具体做法是：首先计算每一个维度上数据的均值（使用全体数据计算），之后在每一个维度上都减去该均值。下一步便是在数据的每一维度上除以该维度上数据的标准差。</p>
-<h2 id="白化"><a href="#白化" class="headerlink" title="白化"></a><a href="http://deeplearning.stanford.edu/wiki/index.php/Whitening" target="_blank" rel="noopener">白化</a></h2><p>If we are training on images, the raw input is redundant, since adjacent pixel values are highly correlated. The goal of whitening is to make the input less redundant; more formally, our desiderata are that our learning algorithms sees a training input where (i) the features are less correlated with each other, and (ii) the features all have the same variance.</p>
-<p>通过白化处理，数据具有以下特点：</p>
-<ul>
-<li>特征之间相关性较低（协方差越小，相关性越低）</li>
-<li>所有特征具有相同的方差</li>
-</ul>
-<h3 id="PCA-白化"><a href="#PCA-白化" class="headerlink" title="PCA 白化"></a>PCA 白化</h3><p>参见 <a href="https://www.jiqizhixin.com/articles/2017-07-05-2" target="_blank" rel="noopener">https://www.jiqizhixin.com/articles/2017-07-05-2</a></p>
-<h3 id="数据预处理标准流程"><a href="#数据预处理标准流程" class="headerlink" title="数据预处理标准流程"></a>数据预处理标准流程</h3><ol>
-<li>自然灰度图像</li>
-</ol>
-<p>每个样本均值消减，然后PCA/ZCA白化。</p>
-<ol>
-<li>彩色图像</li>
-</ol>
-<p>数据特征缩放，使像素值位于[0,1]区间，再PCA/ZCA 白化。在PCA之前需要对特征进行分量均值归零化。</p>
-<h1 id="数据Shuffle"><a href="#数据Shuffle" class="headerlink" title="数据Shuffle"></a>数据Shuffle</h1><p>信息论中曾提到：“从不相似的事件中学习总是比从相似事件中学习更具信息量。”</p>
-<p>在训练神经网络时，尽管训练数据固定，但是由于采用了随机批处理（mini-batch)的训练机智，因此我们可在模型每轮（epoch）训练进行前将训练数据集随机打乱（shuffle)，确保模型不同轮数相同批次“看到”的数据是不同的。</p>
-<p>这样的处理不仅会提高模型收敛速率，同时，相对固定次序训练的模型，此操作会略微提升模型在测试集上的预测结果。</p>
-
-          
+          <p>从广义上讲，数据预处理可以认为是在正式进入深度网络计算之前的一切操作。除了狭义上的对数据做归一化、缩放等直接的数据预处理外，数据扩充、不平衡样本的处理、数据shuffle等也可以认为是数据预处理的方式。这里，就几种总结一下对数据的各种操作方式以及他们的作用和意义。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/26/深度学习中的数据预处理/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -732,71 +689,14 @@
 
       
         
-          
-            <h1 id="Hexo-GitHub-搭建个人博客"><a href="#Hexo-GitHub-搭建个人博客" class="headerlink" title="Hexo + GitHub 搭建个人博客"></a>Hexo + GitHub 搭建个人博客</h1><p>Hexo是一个快速、简洁且高效的博客框架，而Github是一个免费的代码托管工具，利用Github Pages可以免费创建一个静态网站。下面将介绍如何使用Hexo和Github，在win10环境下搭建一个个人博客。</p>
-<h2 id="安装和配置Hexo及GitHub"><a href="#安装和配置Hexo及GitHub" class="headerlink" title="安装和配置Hexo及GitHub"></a>安装和配置Hexo及GitHub</h2><p>注意：安装Hexo前，需要安装Node.js和Git。</p>
-<p>安装好以上程序后，打开Git Bash或者cmd,这里采用Git Bash。</p>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>以管理员身份运行Git Bash,输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
-<p>即可完成Hexo的安装。</p>
-<h3 id="使用Hexo进行本地建站"><a href="#使用Hexo进行本地建站" class="headerlink" title="使用Hexo进行本地建站"></a>使用Hexo进行本地建站</h3><p>选择一个本地的文件夹（建议不要放在系统盘），如D:\SoftwareFiles\hexo，在Git Bash 命令行输入以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd D:\SoftwareFiles\\hexo</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<p>即可完成Hexo的初始化，并安装成功npm。此时，在D:\SoftwareFiles\hexo文件夹下可看到初始化后的_config.yml，package.json,source,themes等文件目录。</p>
-<p>为了测试<a href="http://0.0.0.0:4000/" target="_blank" rel="noopener">本地建站</a>是否成功，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
-<p>如果显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INFO Hexo is running at http://0.0.0.0:4000/.</span><br></pre></td></tr></table></figure></p>
-<p>，则说明成功，可自行访问<a href="http://0.0.0.0:4000/查看网页效果。" target="_blank" rel="noopener">http://0.0.0.0:4000/查看网页效果。</a></p>
-<h3 id="将网站发布到GitHub的同名repository中"><a href="#将网站发布到GitHub的同名repository中" class="headerlink" title="将网站发布到GitHub的同名repository中"></a>将网站发布到GitHub的同名repository中</h3><p>注意：此操作在已有GitHub账号前提下进行。并请自行配置SSH和新建repository（MyGitHub.github.io)。</p>
-<p>在D:\SoftwareFiles\hexo下输入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>此时，可以看到在D:\SoftwareFiles\hexo下出现.deploy_git。</p>
-<p>打开D:\SoftwareFiles\hexo文件夹中的_config.yml文件，找到</p>
-<pre><code># Deployment
-## Docs: http://hexo.io/docs/deployment.html
-deploy:   
-  type: git  
-  repo: git@github.com:MyGithub/MyGithub.github.io  
-  branch: master
-</code></pre><p>注： (1) 其中MyGitHub替换成你的Github账户用户名; (2) 注意在yml文件中，:后面都是要带空格的</p>
-<p>此时，可以访问<a href="http://MyGitHub.github.io查看你的博客页面。" target="_blank" rel="noopener">http://MyGitHub.github.io查看你的博客页面。</a><br>若无法访问，通过以下命令更新GitHub网页。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>注意：若无法git，则运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p>
-<h2 id="Hexo配置及发表文章"><a href="#Hexo配置及发表文章" class="headerlink" title="Hexo配置及发表文章"></a>Hexo配置及发表文章</h2><h3 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置"></a>站点配置</h3><p>在D:\SoftwareFiles\hexo文件夹中找到_config.yml文件，找到以下部分内容，并修改成自己的内容。</p>
-<pre><code># Site
-title: 网站标题
-subtitle: 网站子标题（座佑铭）
-description: 网站描述
-author:  网站作者，也就是您的名字
-language: 网站使用的语言        
-timezone: 网站时区，Hexo 预设使用您电脑的时区。
-</code></pre><h3 id="分页配置"><a href="#分页配置" class="headerlink" title="分页配置"></a>分页配置</h3><p>在D:\SoftwareFiles\hexo文件夹中找到_config.yml文件，找到以下部分内容，并修改成自己的内容。</p>
-<pre><code># Pagination
-per_page: 10   # 每页显示的文章量，如果设置值为0，则表示禁止分页
-pagination_dir: page  
-</code></pre><h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><p>由于个人喜好，这里选择简洁的next主题。</p>
-<h4 id="下载next主题"><a href="#下载next主题" class="headerlink" title="下载next主题"></a>下载next主题</h4><p>在D:\SoftwareFiles\hexo下输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure></p>
-<p>完成下载。</p>
-<h4 id="修改网站的主题为next"><a href="#修改网站的主题为next" class="headerlink" title="修改网站的主题为next"></a>修改网站的主题为next</h4><p>打开D:\SoftwareFiles\hexo下的_config.yml文件，找到以下内容，将theme修改为next。</p>
-<pre><code># Extensions
-## Plugins: http://hexo.io/plugins/
-## Themes: http://hexo.io/themes/
-theme: next
-</code></pre><h3 id="本地验证是否可用"><a href="#本地验证是否可用" class="headerlink" title="本地验证是否可用"></a>本地验证是否可用</h3><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br></pre></td></tr></table></figure></p>
-<p>访问<a href="http://0.0.0.0:4000/" target="_blank" rel="noopener">本地网站</a>，确认网站主题是否切换为Next。</p>
-<h3 id="更新github"><a href="#更新github" class="headerlink" title="更新github"></a>更新github</h3><p>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
-<h3 id="发表新文章"><a href="#发表新文章" class="headerlink" title="发表新文章"></a>发表新文章</h3><p>在D:\SoftwareFiles\hexo下输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;name of the new post&quot;</span><br></pre></td></tr></table></figure></p>
-<p>此时，在source文件夹下的_post文件夹下，可以看到新建的一个名为name of the new post.md的文件，打开该文件可以看到如下内容。</p>
-<pre><code>title: name of the new post
-date: 2015-12-09 22:55:25
-tags:
----
-</code></pre><p>可以给文章贴上相应的tags，如有多个则按照如下格式</p>
-<pre><code>[tag1, tag2, tag3, ...]
-</code></pre><p>在—下方添加正文内容即可，注意需要使用markdown语法进行书写，此处使用markdownpad2编辑。</p>
-<p>文章撰写完成后保存，在Git Bash下打开D:\SoftwareFiles\hexo，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure></p>
-<p>即可生成新网站，并且同步Github上的网站内容。</p>
-
-          
+          <h1 id="Hexo-GitHub-搭建个人博客"><a href="#Hexo-GitHub-搭建个人博客" class="headerlink" title="Hexo + GitHub 搭建个人博客"></a>Hexo + GitHub 搭建个人博客</h1><p>Hexo是一个快速、简洁且高效的博客框架，而Github是一个免费的代码托管工具，利用Github Pages可以免费创建一个静态网站。下面将介绍如何使用Hexo和Github，在win10环境下搭建一个个人博客。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/22/Hexo-GitHub搭建个人博客/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
