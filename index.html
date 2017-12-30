@@ -320,9 +320,68 @@
 </ul>
 <p>  但是，<strong>虚函数</strong>突破了这一限制。在派生类的基类部分中，<strong>派生类的虚函数取代了基类原来的同名虚函数</strong>，因此，在使基类指针指向派生类对象后，使用该<strong>基类指针调用这个同名函数成员时就调用了派生类的虚函数。</strong></p>
 <ul>
-<li><font color="red"> 当把基类的某个成员函数声明为虚函数时，C++允许在其派生类中对该虚函数进行重新定义，赋予它新的功能，并且可以通过基类指针指向同一类族的不同派生类的对象，来调相应派生类中的该<strong>同名虚函数</strong>。</font><br>由虚函数实现的动态多态性就是：<strong>同一类族中不同的派生类对象，对同一函数调用做出不同的响应。</strong></li>
+<li><p><font color="red"> 当把基类的某个成员函数声明为虚函数时，C++允许在其派生类中对该虚函数进行重新定义，赋予它新的功能，并且可以通过基类指针指向同一类族的不同派生类的对象，来调相应派生类中的该<strong>同名虚函数</strong>。</font><br>由虚函数实现的动态多态性就是：<strong>同一类族中不同的派生类对象，对同一函数调用做出不同的响应。</strong></p>
+</li>
+<li><p>虚函数的使用方法：</p>
+<ol>
+<li>在基类中使用virtual关键字声明成员函数为虚函数（这样就可以在派生类中对该虚函数进行重新定义，赋予它新的功能）。</li>
+<li>在派生类中重新定义此虚函数，要求<strong>函数名、形参列表、返回值类型均要与基类中的虚函数相同</strong>，并根据具体需要重新定义它的函数体。</li>
+</ol>
+</li>
+<li><p>C++ 规定，当一个成员函数被定义为虚函数后，其派生类中的同名函数都自动后才能为虚函数（不一定有关键字virtual），但是为了清晰，习惯上每一层都加上virtual关键字。</p>
+</li>
 </ul>
+<pre><code>class base
+{
+  public:
+    base(int a):b(a){}
+    void my()
+        { cout&lt;&lt;&quot;mybase.&quot;&lt;&lt;endl; }
+    virtual void func()
+        { cout&lt;&lt;&quot;I am a base.&quot;&lt;&lt;endl; }
 
+  private:
+    int b;
+};
+class child1:public base
+{
+  public:
+    child1(int a1,int a2):base(a1),c1(a2){}
+    void my(){ cout&lt;&lt;&quot;mychild.&quot;&lt;&lt;endl;}
+    virtual void func(){ cout&lt;&lt;&quot;I am a child1.&quot;&lt;&lt;endl; }
+
+  private:
+    int c1;
+};
+
+class child2:public base
+{
+   public:
+    child2(int a1,int a2):base(a1),c2(a2){}
+    void my() { cout&lt;&lt;&quot;mychild.&quot;&lt;&lt;endl;} 
+    virtual void func() { cout&lt;&lt;&quot;I am a child2.&quot;&lt;&lt;endl; } 
+
+   private: 
+     int c2;
+};
+
+
+base *bptr;
+child1 c1(10,1);
+child2 c2(10,2);
+
+bptr=&amp;c1;    //基类指针指向派生类对象child1
+bptr-&gt;func();//调用的是child1中的func()
+c1.func();   //调用的是child1中的func()
+bptr-&gt;my();  //调用的是派生类对象中的基类部分，也就是base中的my()
+c1.my();     //调用的是派生类对象中的成员函数，也就是child1中的my()
+
+bptr=&amp;c2;    //基类指针指向派生类对象child2
+bptr-&gt;func();//调用的是child2中的func()
+c2.func();   //调用的是child2中的func()
+bptr-&gt;my();  //调用的是派生类对象中的基类部分，也就是base中的my()
+c2.my();     //调用的是派生类对象中的成员函数，也就是child2中的my()
+</code></pre>
           
         
       
