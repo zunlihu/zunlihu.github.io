@@ -299,104 +299,15 @@
 
       
         
-          
-            <h2 id="什么是多态"><a href="#什么是多态" class="headerlink" title="什么是多态?"></a>什么是多态?</h2><p>当想不同的人发出同样的一个命令时，不同的人可能有不同的反应。这就是多态性。</p>
-<p>有了多态性，相当于对象有了主观能动性。对对象的使用者而言，使用起来就方便了。特别是当被管理对象的数量和类型增加时，管理者的工作量并不增加。</p>
-<ul>
-<li>通过继承同一个基类，产生了相关的不同的派生类，与基类中的同名的成员函数在不同的派生类中会有不同的实现，也就是说：一个接口、多种方法。</li>
-<li>多态是面向对象的重要技术之一，他是一种行为的封装，是同一个事物所表现出来的多种形态，简单地说就是：一个接口、多种形态。</li>
-<li>那么，在运行时使用同一个成员名来调用类对象的成员函数，会调用哪个对象的成员函数呢？这就是多态要解决的问题！！</li>
-</ul>
-<h1 id="多态的作用"><a href="#多态的作用" class="headerlink" title="多态的作用"></a>多态的作用</h1><ul>
-<li>多态技术允许将基类指针或基类引用指向派生类对象。</li>
-<li>把 不同派生类的对象都当作基类对象来看待，可以屏蔽不同派生类之间的差异，从而写出通用的代码适应需求的不断变化。</li>
-</ul>
-<h1 id="多态的分类"><a href="#多态的分类" class="headerlink" title="多态的分类"></a>多态的分类</h1><ol>
-<li>编译时的多态性（静态绑定），通过运算符重载或者函数重载实现。</li>
-<li>运行时的额多态（动态绑定），通过虚函数和基类指针共同作用实现。</li>
-</ol>
-<h1 id="C-中多态的实现"><a href="#C-中多态的实现" class="headerlink" title="C++中多态的实现"></a>C++中多态的实现</h1><ul>
-<li>C++中，基类指针是用来指向基类对象的，如果用它来指向派生类对象，则进行指针类型转换（上行转换），将派生类指针转换为基类指针，所以该指针会指向派生类对象中的基类部分，<strong>通过该指针是无法调用派生类对象中的成员函数的</strong>。</li>
-</ul>
-<p>  但是，<strong>虚函数</strong>突破了这一限制。在派生类的基类部分中，<strong>派生类的虚函数取代了基类原来的同名虚函数</strong>，因此，在使基类指针指向派生类对象后，使用该<strong>基类指针调用这个同名函数成员时就调用了派生类的虚函数。</strong></p>
-<ul>
-<li><p><font color="red"> 当把基类的某个成员函数声明为虚函数时，C++允许在其派生类中对该虚函数进行重新定义，赋予它新的功能，并且可以通过基类指针指向同一类族的不同派生类的对象，来调相应派生类中的该<strong>同名虚函数</strong>。</font><br>由虚函数实现的动态多态性就是：<strong>同一类族中不同的派生类对象，对同一函数调用做出不同的响应。</strong></p>
-</li>
-<li><p>虚函数的使用方法：</p>
-<ol>
-<li>在基类中使用virtual关键字声明成员函数为虚函数（这样就可以在派生类中对该虚函数进行重新定义，赋予它新的功能）。</li>
-<li>在派生类中重新定义此虚函数，要求<strong>函数名、形参列表、返回值类型均要与基类中的虚函数相同</strong>，并根据具体需要重新定义它的函数体。</li>
-</ol>
-</li>
-<li><p>C++ 规定，当一个成员函数被定义为虚函数后，其派生类中的同名函数都自动后才能为虚函数（不一定有关键字virtual），但是为了清晰，习惯上每一层都加上virtual关键字。</p>
-</li>
-</ul>
-<pre><code>class base
-{
-  public:
-    base(int a):b(a){}
-    void my()
-        { cout&lt;&lt;&quot;mybase.&quot;&lt;&lt;endl; }
-    virtual void func()
-        { cout&lt;&lt;&quot;I am a base.&quot;&lt;&lt;endl; }
-
-  private:
-    int b;
-};
-class child1:public base
-{
-  public:
-    child1(int a1,int a2):base(a1),c1(a2){}
-    void my(){ cout&lt;&lt;&quot;mychild.&quot;&lt;&lt;endl;}
-    virtual void func(){ cout&lt;&lt;&quot;I am a child1.&quot;&lt;&lt;endl; }
-
-  private:
-    int c1;
-};
-
-class child2:public base
-{
-   public:
-    child2(int a1,int a2):base(a1),c2(a2){}
-    void my() { cout&lt;&lt;&quot;mychild.&quot;&lt;&lt;endl;} 
-    virtual void func() { cout&lt;&lt;&quot;I am a child2.&quot;&lt;&lt;endl; } 
-
-   private: 
-     int c2;
-};
-
-
-base *bptr;
-child1 c1(10,1);
-child2 c2(10,2);
-
-bptr=&amp;c1;    //基类指针指向派生类对象child1
-bptr-&gt;func();//调用的是child1中的func()
-c1.func();   //调用的是child1中的func()
-bptr-&gt;my();  //调用的是派生类对象中的基类部分，也就是base中的my()
-c1.my();     //调用的是派生类对象中的成员函数，也就是child1中的my()
-
-bptr=&amp;c2;    //基类指针指向派生类对象child2
-bptr-&gt;func();//调用的是child2中的func()
-c2.func();   //调用的是child2中的func()
-bptr-&gt;my();  //调用的是派生类对象中的基类部分，也就是base中的my()
-c2.my();     //调用的是派生类对象中的成员函数，也就是child2中的my()
-</code></pre><h2 id="虚函数和纯虚函数"><a href="#虚函数和纯虚函数" class="headerlink" title="虚函数和纯虚函数"></a>虚函数和纯虚函数</h2><ul>
-<li><font color="red">应该考虑：</font> 对成员函数的调用是通过对象名还是通过基类指针或者基类引用去访问。如果是后两者，则应当声明为虚函数。</li>
-<li>虚函数：如果一个类中定义了虚函数virtual，那么这个虚函数是被实现的，其作用就是为了让该虚函数在这个类的的派生类中被覆盖，被实现为不同的功能，从而结合基类指针以实现动态多态性。</li>
-<li><p>纯虚函数：有时，在定义一个虚函数时，并不定义其函数体，即它的函数体是空的，它的作用只是保留一个虚函数名，它关注的是接口的统一性，其具体的功能实现由它的派生类完成。</p>
-<pre><code>virtual 返回类型 函数名（参数表) = 0；
-//example
-virtual float area（float a，float b ) = 0；
-</code></pre><ol>
-<li>最后的“=0”的作用只是告诉编译器这是一个纯虚函数。</li>
-<li>纯虚函数只有具体函数的名称，没有函数体，不具备函数的功能，因此不能被调用。只有在派生类中被重新定义过以后才具备函数的功能，才能被调用。</li>
-<li>如果在一个类中声明了纯虚函数，但是在其派生</li>
-</ol>
-</li>
-</ul>
-
-          
+          <h2 id="什么是多态"><a href="#什么是多态" class="headerlink" title="什么是多态?"></a>什么是多态?</h2><p>当想不同的人发出同样的一个命令时，不同的人可能有不同的反应。这就是多态性。</p>
+<p>有了多态性，相当于对象有了主观能动性。对对象的使用者而言，使用起来就方便了。特别是当被管理对象的数量和类型增加时，管理者的工作量并不增加。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/29/C-中的多态/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
