@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="糊糊">
 <meta property="og:description" content="什么是多态?当想不同的人发出同样的一个命令时，不同的人可能有不同的反应。这就是多态性。 有了多态性，相当于对象有了主观能动性。对对象的使用者而言，使用起来就方便了。特别是当被管理对象的数量和类型增加时，管理者的工作量并不增加。  通过继承同一个基类，产生了相关的不同的派生类，与基类中的同名的成员函数在不同的派生类中会有不同的实现，也就是说：一个接口、多种方法。 多态是面向对象的重要技术之一，他是一">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-29T12:04:49.831Z">
+<meta property="og:updated_time" content="2017-12-30T06:24:20.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++中的多态">
 <meta name="twitter:description" content="什么是多态?当想不同的人发出同样的一个命令时，不同的人可能有不同的反应。这就是多态性。 有了多态性，相当于对象有了主观能动性。对对象的使用者而言，使用起来就方便了。特别是当被管理对象的数量和类型增加时，管理者的工作量并不增加。  通过继承同一个基类，产生了相关的不同的派生类，与基类中的同名的成员函数在不同的派生类中会有不同的实现，也就是说：一个接口、多种方法。 多态是面向对象的重要技术之一，他是一">
@@ -308,8 +308,16 @@
 <li>那么，在运行时使用同一个成员名来调用类对象的成员函数，会调用哪个对象的成员函数呢？这就是多态要解决的问题！！</li>
 </ul>
 <h1 id="多态的作用"><a href="#多态的作用" class="headerlink" title="多态的作用"></a>多态的作用</h1><ul>
-<li>多态技术云秀将基类指针或基类引用指向派生类对象。</li>
+<li>多态技术允许将基类指针或基类引用指向派生类对象。</li>
+<li>把 不同派生类的对象都当作基类对象来看待，可以屏蔽不同派生类之间的差异，从而写出通用的代码适应需求的不断变化。</li>
 </ul>
+<h1 id="多态的分类"><a href="#多态的分类" class="headerlink" title="多态的分类"></a>多态的分类</h1><ol>
+<li>编译时的多态性（静态绑定），通过运算符重载或者函数重载实现。</li>
+<li>运行时的额多态（动态绑定），通过虚函数和基类指针共同作用实现。</li>
+</ol>
+<h1 id="C-中多态的实现"><a href="#C-中多态的实现" class="headerlink" title="C++中多态的实现"></a>C++中多态的实现</h1><ol>
+<li>C++中，基类指针是用来指向基类对象的，如果用它来指向派生类对象，则进行指针类型转换（上行转换），将派生类指针转换为基类指针，所以该指针会指向派生类对象中的基类部分，<strong>通过该指针是无法调用派生类对象中的成员函数的</strong>。</li>
+</ol>
 
       
     </div>
@@ -473,7 +481,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是多态"><span class="nav-number">1.</span> <span class="nav-text">什么是多态?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的作用"><span class="nav-number">2.</span> <span class="nav-text">多态的作用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是多态"><span class="nav-number">1.</span> <span class="nav-text">什么是多态?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的作用"><span class="nav-number">2.</span> <span class="nav-text">多态的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态的分类"><span class="nav-number">3.</span> <span class="nav-text">多态的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-中多态的实现"><span class="nav-number">4.</span> <span class="nav-text">C++中多态的实现</span></a></li></ol></div>
             
 
           </div>
