@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="糊糊">
 <meta property="og:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int  pOne;    //指向整型常量的指针，它*指向的值不能修改 int  const pTwo;    //指向整型的常量指针，它*不能在指向别的变量，但指向（变量）的值可以修改。  const int const pThree;  //指">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-02T12:22:32.425Z">
+<meta property="og:updated_time" content="2018-01-02T12:25:43.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="const在函数传参时的使用">
 <meta name="twitter:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int  pOne;    //指向整型常量的指针，它*指向的值不能修改 int  const pTwo;    //指向整型的常量指针，它*不能在指向别的变量，但指向（变量）的值可以修改。  const int const pThree;  //指">
@@ -305,6 +305,11 @@
 <p>int <em> const pTwo;    //指向整型的<strong>常量指针</strong>，它<em>*不能在指向别的变量</em></em>，但指向（变量）的值可以修改。 </p>
 <p>const int <em>const pThree;  //指向<strong>整型常量</strong>的<strong>常量指针</strong>。它<em>*既不能再指向别的常量，指向的值也不能修改。</em></em></p>
 <p><strong>关键字const右边</strong>来确定什么被声明为常量 ，如果该关键字的右边是类型，则值是常量；如果关键字的右边是指针变量，则指针本身是常量。</p>
+<h2 id="const指针和指向const的指针"><a href="#const指针和指向const的指针" class="headerlink" title="const指针和指向const的指针"></a>const指针和指向const的指针</h2><h3 id="指向const的指针"><a href="#指向const的指针" class="headerlink" title="指向const的指针"></a>指向const的指针</h3><p>指针指向的内容是不能被修改的！！</p>
+<p>两种写法：</p>
+<ul>
+<li><figure class="highlight plain"><figcaption><span>int* p```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```int const* p</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -472,7 +477,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#const-指针的定义"><span class="nav-number">1.</span> <span class="nav-text">const 指针的定义</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#const-指针的定义"><span class="nav-number">1.</span> <span class="nav-text">const 指针的定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#const指针和指向const的指针"><span class="nav-number">1.1.</span> <span class="nav-text">const指针和指向const的指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指向const的指针"><span class="nav-number">1.1.1.</span> <span class="nav-text">指向const的指针</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
