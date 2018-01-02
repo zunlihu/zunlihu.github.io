@@ -79,14 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形如果一个点在这个凸四边形内，那么按照逆时针方向走的话，该点一定会在每一条边的左边。 方法：  按逆时针方向遍历这个凸四边形的每一条边的两个顶点A(X1,Y1)和B(X2,Y2)，构成矢量 AB = (X2 - X1, Y2 - Y1).  采用矢量叉积的方法判断一个点是否在一个矢量左边。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="判断点在多边形内部还是外部">
+<meta property="og:url" content="http://yoursite.com/2018/01/02/判断点在多边形内部还是外部/index.html">
 <meta property="og:site_name" content="糊糊">
+<meta property="og:description" content="对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形如果一个点在这个凸四边形内，那么按照逆时针方向走的话，该点一定会在每一条边的左边。 方法：  按逆时针方向遍历这个凸四边形的每一条边的两个顶点A(X1,Y1)和B(X2,Y2)，构成矢量 AB = (X2 - X1, Y2 - Y1).  采用矢量叉积的方法判断一个点是否在一个矢量左边。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-22T09:33:19.019Z">
+<meta property="og:updated_time" content="2018-01-02T07:49:29.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="判断点在多边形内部还是外部">
+<meta name="twitter:description" content="对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形如果一个点在这个凸四边形内，那么按照逆时针方向走的话，该点一定会在每一条边的左边。 方法：  按逆时针方向遍历这个凸四边形的每一条边的两个顶点A(X1,Y1)和B(X2,Y2)，构成矢量 AB = (X2 - X1, Y2 - Y1).  采用矢量叉积的方法判断一个点是否在一个矢量左边。">
 
 
 
@@ -116,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/02/判断点在多边形内部还是外部/"/>
 
 
 
 
 
-  <title>categories | 糊糊</title>
+  <title>判断点在多边形内部还是外部 | 糊糊</title>
   
 
 
@@ -217,33 +220,152 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/判断点在多边形内部还是外部/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zunli Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="糊糊">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">categories</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">判断点在多边形内部还是外部</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T15:24:37+08:00">
+                2018-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？</p>
+<h2 id="如果给定的多边形是凸多边形"><a href="#如果给定的多边形是凸多边形" class="headerlink" title="如果给定的多边形是凸多边形"></a>如果给定的多边形是凸多边形</h2><p>如果一个点在这个凸四边形内，那么按照逆时针方向走的话，该点一定会在每一条边的<strong>左边</strong>。</p>
+<p>方法：</p>
+<ol>
+<li><p>按逆时针方向遍历这个凸四边形的每一条边的两个顶点A(X1,Y1)和B(X2,Y2)，构成矢量 AB = (X2 - X1, Y2 - Y1).</p>
+</li>
+<li><p>采用矢量叉积的方法判断一个点是否在一个矢量左边。</p>
+<ul>
+<li>假设给定点C(X3,Y3)，AC = (X3 - X1, Y3 - Y1).</li>
+<li><p>AB和AC的叉积为（2*2的行列式）：</p>
+<p>  |X2-X1 Y2-Y1|<br>  |X3-X1 Y3-Y1|</p>
+</li>
+</ul>
+</li>
+</ol>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/30/斐波那契数列/" rel="next" title="斐波那契数列">
+                <i class="fa fa-chevron-left"></i> 斐波那契数列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -276,8 +398,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -330,6 +461,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如果给定的多边形是凸多边形"><span class="nav-number">1.</span> <span class="nav-text">如果给定的多边形是凸多边形</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

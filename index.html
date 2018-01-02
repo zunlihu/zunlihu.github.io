@@ -229,6 +229,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/判断点在多边形内部还是外部/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zunli Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="糊糊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/02/判断点在多边形内部还是外部/" itemprop="url">判断点在多边形内部还是外部</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T15:24:37+08:00">
+                2018-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？</p>
+<h2 id="如果给定的多边形是凸多边形"><a href="#如果给定的多边形是凸多边形" class="headerlink" title="如果给定的多边形是凸多边形"></a>如果给定的多边形是凸多边形</h2><p>如果一个点在这个凸四边形内，那么按照逆时针方向走的话，该点一定会在每一条边的<strong>左边</strong>。</p>
+<p>方法：</p>
+<ol>
+<li><p>按逆时针方向遍历这个凸四边形的每一条边的两个顶点A(X1,Y1)和B(X2,Y2)，构成矢量 AB = (X2 - X1, Y2 - Y1).</p>
+</li>
+<li><p>采用矢量叉积的方法判断一个点是否在一个矢量左边。</p>
+<ul>
+<li>假设给定点C(X3,Y3)，AC = (X3 - X1, Y3 - Y1).</li>
+<li><p>AB和AC的叉积为（2*2的行列式）：</p>
+<p>  |X2-X1 Y2-Y1|<br>  |X3-X1 Y3-Y1|</p>
+</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/30/斐波那契数列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -930,7 +1064,7 @@ A(N)=A(i)*A(i)       if N%2=0
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -982,7 +1116,7 @@ A(N)=A(i)*A(i)       if N%2=0
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
