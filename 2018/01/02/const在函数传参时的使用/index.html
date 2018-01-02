@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="糊糊">
 <meta property="og:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int* pOne;    //指向整型常量的指针，它指向的值不能修改 int* const pTwo;    //指向整型的常量指针，它不能在指向别的变量，但指向（变量）的值可以修改。  const int *const pThree;  //指向">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-02T12:41:04.843Z">
+<meta property="og:updated_time" content="2018-01-02T12:42:54.748Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="const在函数传参时的使用">
 <meta name="twitter:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int* pOne;    //指向整型常量的指针，它指向的值不能修改 int* const pTwo;    //指向整型的常量指针，它不能在指向别的变量，但指向（变量）的值可以修改。  const int *const pThree;  //指向">
@@ -307,7 +307,7 @@ const int *const pThree;  //指向整型常量的常量指针。它既不能再�
 </code></pre><p><strong>关键字const右边</strong>来确定什么被声明为常量 ，如果该关键字的右边是类型，则值是常量；如果关键字的右边是指针变量，则指针本身是常量。</p>
 <h2 id="const指针和指向const的指针"><a href="#const指针和指向const的指针" class="headerlink" title="const指针和指向const的指针"></a>const指针和指向const的指针</h2><h3 id="指向const的指针"><a href="#指向const的指针" class="headerlink" title="指向const的指针"></a>指向const的指针</h3><p><strong>指针指向的内容是不能被修改的！！</strong></p>
 <p>两种写法：</p>
-<figure class="highlight plain"><figcaption><span>int* p```(推荐）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```int const* p</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>int* p```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">```int const* p</span><br></pre></td></tr></table></figure>
 <p>第一种可以理解为，p是一个指针，它指向的内容是<code>const int</code> 类型。p本身不用初始化它可以指向任何标示符，但这里它<strong>指向的内容是不能被改变的</strong>。</p>
 <p>第二种很容易被理解成是p是一个指向int的const指针（指针本身不能被修改），但这样理解是错误的，它也是表示的是<strong>指向const的指针</strong>（指针指向的内容是不能被修改的），它跟第一种表达的是一个意思。为了避免混淆推荐大家用第一种。</p>
 <h3 id="const指针"><a href="#const指针" class="headerlink" title="const指针"></a>const指针</h3><p><strong>指针本身的值是不能被修改的！！</strong></p>
