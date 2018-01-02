@@ -79,21 +79,22 @@
 
 
 
-<meta name="description" content="对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个焦点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，就可以得出是否是在四边形内了">
+<meta name="description" content="判断点在多边形内部还是外部对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个交点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点。但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="判断点在多边形内部还是外部">
 <meta property="og:url" content="http://yoursite.com/2018/01/02/判断点在多边形内部还是外部/index.html">
 <meta property="og:site_name" content="糊糊">
-<meta property="og:description" content="对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个焦点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，就可以得出是否是在四边形内了">
+<meta property="og:description" content="判断点在多边形内部还是外部对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个交点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点。但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.dewen.net.cn/upload/editor/80781333/201211172309093480.png?num=0.6002412369679972">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201107/21/0_1311240376l4Rr.gif">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201107/21/0_1311240389eSmK.gif">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201107/21/0_1311240410jQIj.gif">
-<meta property="og:updated_time" content="2018-01-02T08:22:06.585Z">
+<meta property="og:updated_time" content="2018-01-02T08:53:06.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="判断点在多边形内部还是外部">
-<meta name="twitter:description" content="对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个焦点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，就可以得出是否是在四边形内了">
-<meta name="twitter:image" content="http://hi.csdn.net/attachment/201107/21/0_1311240376l4Rr.gif">
+<meta name="twitter:description" content="判断点在多边形内部还是外部对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个交点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点。但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，">
+<meta name="twitter:image" content="http://www.dewen.net.cn/upload/editor/80781333/201211172309093480.png?num=0.6002412369679972">
 
 
 
@@ -303,10 +304,22 @@
       
 
       
-        <p>对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？</p>
-<h2 id="如果给定的多边形是凸多边形"><a href="#如果给定的多边形是凸多边形" class="headerlink" title="如果给定的多边形是凸多边形"></a>如果给定的多边形是凸多边形</h2><p>法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个焦点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，就可以得出是否是在四边形内了<br>法二： 如果点在这个凸四边形内，那么按照逆时针方向走的话，该点一定会在每一条边的<strong>左边</strong>。</p>
+        <h1 id="判断点在多边形内部还是外部"><a href="#判断点在多边形内部还是外部" class="headerlink" title="判断点在多边形内部还是外部"></a>判断点在多边形内部还是外部</h1><p>对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？</p>
+<h2 id="如果给定的多边形是凸多边形"><a href="#如果给定的多边形是凸多边形" class="headerlink" title="如果给定的多边形是凸多边形"></a>如果给定的多边形是凸多边形</h2><p>法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个交点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点。但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，就可以得出是否是在四边形内了。</p>
+<p>法二： 如果点在这个凸四边形内，那么按照逆时针方向走的话，该点一定会在每一条边的<strong>左边</strong>。</p>
 <a id="more"></a>
-<p><strong>方法：</strong></p>
+<p><strong>法一详解：</strong></p>
+<ol>
+<li>假设四边形为ABCD,给定点M(X3,Y3),过C的任意直线为a<em>（x-X3)+b</em>（y-Y3)=0。</li>
+<li>任取一条过点直线l：x = X3,分别求出l与AB,BC, CD, DA的交点，并记录下来。<ul>
+<li>如果交点数&lt;2,则在四边形外边</li>
+<li>如果焦点数=2，设为E、F：</li>
+<li>如果ME&lt;EF&amp;&amp;MF&lt;EF，则在四边形内部</li>
+<li>否则，在四边形外部。</li>
+</ul>
+</li>
+</ol>
+<p><strong>法二详解：</strong></p>
 <ol>
 <li><p>按逆时针方向遍历这个凸四边形的每一条边的两个顶点A(X1,Y1)和B(X2,Y2)，构成矢量 AB = (X2-X1, Y2-Y1).</p>
 </li>
@@ -325,6 +338,42 @@
 </li>
 <li><p>按照逆时针方向，对凸四边形的每一条边都如此判断，如果每次都判断出C在左边，那么就说明这个点在凸多边形内部了。</p>
 </li>
+</ol>
+<h2 id="如果给定的多边形是凹多边形"><a href="#如果给定的多边形是凹多边形" class="headerlink" title="如果给定的多边形是凹多边形"></a>如果给定的多边形是凹多边形</h2><p>先在凹多边形上添加一些边，使得凹多边形变成凸多边形，然后再按照凸多边形的方法去判断。示例图如下：<br><img src="http://www.dewen.net.cn/upload/editor/80781333/201211172309093480.png?num=0.6002412369679972" alt=""><br>对于凹多边形ABCDEFGH，补边BE和FH(图中虚线所示)，则可以构成三个凸多边形：凸多边形ABEFH，凸多边形BCDE和凸多边形FGH，然后判断给定点与这三个凸多边形的关系。</p>
+<p>如果给定点在凸多边形ABEFH内部，而在凸多边形BCDE和凸多边形FGH的外部，那么就可以说明给定点在多边形ABCDEFGH的内部了。</p>
+<p>下面就分别说明如何判断一个三角形是逆时针还是顺时针，如何判断一个多边形的凹凸性，如何补边，以及如何通过补边构造凸多边形。只要构造出所有的凸多边形，就可以按照上述第二种情况判断了。</p>
+<p>经过上面的所有分析，就可以轻松判断任意一个点是否在一个给定多边形的内部了。</p>
+<h1 id="判断一个三角形的顺时针还是逆时针"><a href="#判断一个三角形的顺时针还是逆时针" class="headerlink" title="判断一个三角形的顺时针还是逆时针"></a>判断一个三角形的顺时针还是逆时针</h1><p>可以利用矢量叉积来判断一个给定的三角形是逆时针还是顺时针。</p>
+<p>假设给定三角形的三个顶点A(x1,y1),B(x2,y2),C(x3,y3),构造三角形两边的矢量分别是：</p>
+<pre><code>AB=(x2-x1,y2-y1), AC=(x3-x1,y3-y1)
+</code></pre><p>则AB和AC的叉积为：</p>
+<pre><code>|x2-x1, y2-y1|
+|x3-x1, y3-y1|
+</code></pre><p>值为：r = (x2-x1)(y3-y1) - (y2-y1)(x3-x1)</p>
+<p>然后利用右手法则进行判断：</p>
+<ul>
+<li>如果r&gt;0,则三角形ABC是逆时针的</li>
+<li>如果r&lt;0,则三角形ABC是顺时针的</li>
+<li>这样就可以判断一个给定三角形是顺时针还是逆时针了。</li>
+</ul>
+<p>(如果这里你发现计算出r=0，那么说明ABC三点共线，即给定点在多边形的边上，可以直接返回)</p>
+<h1 id="判断一个多边形的凹凸性。"><a href="#判断一个多边形的凹凸性。" class="headerlink" title="判断一个多边形的凹凸性。"></a>判断一个多边形的凹凸性。</h1><p>利用上述判断三角形是顺时针还是逆时针的方法来辅助判断一个多边形的凹凸性。</p>
+<p>对于一个给定的多边形，按照逆时针方向遍历该多边形的所有顶点，并放入一个首尾相连的循环链表中。然后从这个循环链表中每次取出相邻三个顶点，判断这个三个顶点构成的三角形是顺时针三角形还是逆时针三角形，如果是逆时针，则说明该三角形三个顶点中位于中间的顶点是凸点；如果是顺时针，则说明位于中间的顶点是凹点。</p>
+<p>例如：假设取出的三个顶点是A、B、C，如果三角形ABC是逆时针三角形，则说明顶点B(即位于中间的顶点)是凸点，否则是凹点。然后可以取出D点，通过三角形BCD判断C点的凹凸性，同理D点，E点…最后也可以判断出A点的凹凸性。(通过由最后一个顶点，A点,B点按顺序构成的三角形来判断A点的凹凸性)。如果该多边形所有的顶点经过判断都是凸点，则说明该多边形是凸多边形，否则就是凹多边形。</p>
+<p>对于上述示例用图，多边形ABCDEFGH中，点A，B，E，F，H是凸点，点C，D，G是凹点。由于并不是所有的顶点都是凸点，所以多边形ABCDEFGH是凹多边形。</p>
+<h1 id="补边"><a href="#补边" class="headerlink" title="补边"></a>补边</h1><p>利用上述对给定多边形的每一个顶点的凹凸性的判断来进行补边操作。</p>
+<p>补边算法：</p>
+<ol>
+<li>从存储多边形顶点的循环链表中，找到一个凸点(一定存在这个凸点，即不可能所有顶点都是凹点)</li>
+<li>从这个顶点开始往后遍历顶点，当遇到的第一个凹点时标记紧邻这个凹点的前一个凸点，因为这个凸点就是所需要补的边的一个顶点，然后继续往后遍历，如果还是凹点，跳过继续遍历，直至找到第一个凸点，那么这个凸点就是所需要补的边的另一个顶点。这样就找出了所需要补的边的两个顶点，就可以确定需要补的一条边了。</li>
+<li>从找到的凸点开始，重复上述第2步操作。直至回到最开始找到的凸点，则算法结束。这样就可以找到所有需要补的边了。<br>可以发现，每一条补边，起点和终点都是凸点，中间经过的顶点都是凹点。</li>
+</ol>
+<p>上述示例用图中，对于补边BE，顶点B和E都是凸点，而它们中间的顶点C和D则都是凹点。对于补边FH，顶点F和H都是凸点，而它们中间的顶点G则是凹点。</p>
+<h1 id="构造凸多边形"><a href="#构造凸多边形" class="headerlink" title="构造凸多边形"></a>构造凸多边形</h1><p>利用上述补边来构造凸多边形。</p>
+<p>算法如下：</p>
+<ol>
+<li>对于找到每一条补边，起点和终点都知道，就可以从多边形顶点的循环链表中取出这两个顶点中间的所有的顶点，而这些顶点加上起点和终点就构成了一个外在凸多边形(即不属于原始多边形的多边形)。<br>示例中，外在凸多边形有凸多边形BCDE和凸多边形FGH。</li>
+<li>在原始多边形顶点的循环链表中把所有的凹点都去除，只留下凸点。那么这些凸点即构成了原始多边形经补边之后构造的大凸多边形了。<br>示例中，去除所有凹点C，D，G，则剩下的顶点A,B,E,F,G构成了补边之后的大凸多边形ABEFH</li>
 </ol>
 <h2 id="附注："><a href="#附注：" class="headerlink" title="附注："></a>附注：</h2><h3 id="矢量叉积"><a href="#矢量叉积" class="headerlink" title="矢量叉积"></a>矢量叉积</h3><p>设矢量 P = (x1, y1), Q = (x2, y2)，则 P <em> Q = x1 </em> y2 - x2 <em> y1; 其结果是一个由 (0, 0), P, Q, P + Q 所组成的平行四边形的 带符号的面积，P </em> Q = -(Q <em> P), P </em> (- Q) = -(P * Q)</p>
 <p>叉积的一个非常重要的性质是可以通过它的符号来判断两矢量相互之间的顺逆时针关系：</p>
@@ -495,7 +544,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如果给定的多边形是凸多边形"><span class="nav-number">1.</span> <span class="nav-text">如果给定的多边形是凸多边形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附注："><span class="nav-number">2.</span> <span class="nav-text">附注：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矢量叉积"><span class="nav-number">2.1.</span> <span class="nav-text">矢量叉积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#折线段的拐向判断"><span class="nav-number">2.2.</span> <span class="nav-text">折线段的拐向判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断两线段是否相交"><span class="nav-number">2.3.</span> <span class="nav-text">判断两线段是否相交</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#判断点在多边形内部还是外部"><span class="nav-number">1.</span> <span class="nav-text">判断点在多边形内部还是外部</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如果给定的多边形是凸多边形"><span class="nav-number">1.1.</span> <span class="nav-text">如果给定的多边形是凸多边形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果给定的多边形是凹多边形"><span class="nav-number">1.2.</span> <span class="nav-text">如果给定的多边形是凹多边形</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断一个三角形的顺时针还是逆时针"><span class="nav-number">2.</span> <span class="nav-text">判断一个三角形的顺时针还是逆时针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断一个多边形的凹凸性。"><span class="nav-number">3.</span> <span class="nav-text">判断一个多边形的凹凸性。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#补边"><span class="nav-number">4.</span> <span class="nav-text">补边</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造凸多边形"><span class="nav-number">5.</span> <span class="nav-text">构造凸多边形</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#附注："><span class="nav-number">5.1.</span> <span class="nav-text">附注：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#矢量叉积"><span class="nav-number">5.1.1.</span> <span class="nav-text">矢量叉积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#折线段的拐向判断"><span class="nav-number">5.1.2.</span> <span class="nav-text">折线段的拐向判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断两线段是否相交"><span class="nav-number">5.1.3.</span> <span class="nav-text">判断两线段是否相交</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
