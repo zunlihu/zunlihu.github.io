@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="糊糊">
 <meta property="og:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int* pOne;    //指向整型常量的指针，它指向的值不能修改 int* const pTwo;    //指向整型的常量指针，它不能在指向别的变量，但指向（变量）的值可以修改。  const int *const pThree;  //指向">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-02T13:54:15.998Z">
+<meta property="og:updated_time" content="2018-01-02T14:08:45.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="const在函数传参时的使用">
 <meta name="twitter:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int* pOne;    //指向整型常量的指针，它指向的值不能修改 int* const pTwo;    //指向整型的常量指针，它不能在指向别的变量，但指向（变量）的值可以修改。  const int *const pThree;  //指向">
@@ -310,9 +310,17 @@ const int *const pThree;  //指向整型常量的常量指针。它既不能再�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const int* p</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int const* p</span><br></pre></td></tr></table></figure>
 <p>第一种可以理解为，p是一个指针，它指向的内容是<figure class="highlight plain"><figcaption><span>int```类型。p本身不用初始化它可以指向任何标示符，但这里它**指向的内容是不能被改变的**。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">第二种很容易被理解成是p是一个指向int的const指针（指针本身不能被修改，但这样理解是错误的，它也是表示的是**指向const的指针**（指针指向的内容是不能被修改的)，它跟第一种表达的是一个意思。</span><br><span class="line">为了避免混淆推荐大家用第一种。</span><br><span class="line"></span><br><span class="line">### const指针</span><br><span class="line">**指针本身的值是不能被修改的！！**</span><br><span class="line"></span><br><span class="line">只有一种写法：</span><br></pre></td></tr></table></figure></p>
-<p>int* const p =一个地址;<br>```</p>
-<p>这种形式可以被理解为，p是一个指针，这个指针是指向int的const指针。<strong>它指向的值是可以被改变的</strong>，如*p=3;</p>
-<p><strong>指向const的指针</strong>（指针指向的内容不能被修改）const关健字总是出现在<em>的左边；而<strong>const指针</strong>（指针本身不能被修改）const关健字总是出现在</em>的右边。那不用说两个const中间加个*肯定是指针本身和它指向的内容都是不能被改变的。</p>
+<p>int* const p =一个地址;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这种形式可以被理解为，p是一个指针，这个指针是指向int的const指针。**它指向的值是可以被改变的**，如*p=3;</span><br><span class="line"></span><br><span class="line">**指向const的指针**（指针指向的内容不能被修改）const关健字总是出现在*的左边；而**const指针**（指针本身不能被修改）const关健字总是出现在*的右边。那不用说两个const中间加个*肯定是指针本身和它指向的内容都是不能被改变的。</span><br><span class="line"></span><br><span class="line">## const修饰函数的参数</span><br><span class="line">- 如果参数作输出用，不论它是什么数据类型，也不论它采用“指针传递”还是“引用传递”，都不能加const 修饰，否则该参数将**失去输出功能。**</span><br><span class="line">- const 只能修饰输入参数：</span><br><span class="line"> </span><br><span class="line">    如果输入参数采用“指针传递”，那么加const修饰可以防止意外地改动该指针，起到保护作用。</span><br><span class="line">    1. 对于非内部数据类型的输入参数，应该将“值传递”的方式改为“const引用传递”，目的是提高效率。例如：```void Func(A a)``` 改为```void Func(const A &amp;a)</span><br></pre></td></tr></table></figure></p>
+<p>附注：</p>
+<p>几种函数传参方式及区别：</p>
+<ol>
+<li><p>值传递：形参是实参的拷贝，<strong>改变函数形参的值并不会影响外部实参的值；</strong></p>
+</li>
+<li><p>指针传递：指针传递参数从本质上来说也是值传递，它传递的是一个地址。【值传递过程中，被调函数的形参作为被调函数的局部变量来处理，即在函数内的栈中开辟内存空间以存放由主调函数放进来的实参的值，从而成了实参的一个副本（记住这个，函数内参数的是实参的副本）】。由于指针传递的是外部实参的地址，<strong>当被调函数的形参值发生改变时，自然外部实参值也发生改变。</strong></p>
+</li>
+<li><p>引用传递：被调函数的形参虽然也作为局部变量在栈中开辟了内存空间，但是栈中存放的是由主调函数放进的实参变量的地址。被调函数对形参的任何操作都被处理成间接寻址，即通过栈中存放的地址访问主调函数中实参变量（实参和形参通过引用，合二为一，说白点就是：一个人，有两个名字那种；后面想会详细说）。因此，<strong>形参的任何改动都会直接影响到实参。</strong></p>
+</li>
+</ol>
 
       
     </div>
