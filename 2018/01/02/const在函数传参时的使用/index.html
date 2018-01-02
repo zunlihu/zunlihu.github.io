@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android Studio," />
+  <meta name="keywords" content="C++," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="由于项目需要，最近需要做安卓开发，因此开始了Android Studio的小白之旅。 Anndroid Studio 2.3.2 打开project，第一个要面对的就是Proxy Settings配置代理，当然也可以通过File-&amp;gt;Settings-&amp;gt;Apperarance&amp;amp;Behavior-&amp;gt;System Settings-&amp;gt;HTTP Proxy打开配置。 这里主">
-<meta name="keywords" content="Android Studio">
+<meta name="description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int  pOne;    //指向整型常量的指针，它*指向的值不能修改 int  const pTwo;    //指向整型的常量指针，它*不能在指向别的变量，但指向（变量）的值可以修改。  const int const pThree;  //指">
+<meta name="keywords" content="C++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Stuio Proxy Settings">
-<meta property="og:url" content="http://yoursite.com/2017/12/23/Android-Stuio-Proxy-Settings/index.html">
+<meta property="og:title" content="const在函数传参时的使用">
+<meta property="og:url" content="http://yoursite.com/2018/01/02/const在函数传参时的使用/index.html">
 <meta property="og:site_name" content="糊糊">
-<meta property="og:description" content="由于项目需要，最近需要做安卓开发，因此开始了Android Studio的小白之旅。 Anndroid Studio 2.3.2 打开project，第一个要面对的就是Proxy Settings配置代理，当然也可以通过File-&amp;gt;Settings-&amp;gt;Apperarance&amp;amp;Behavior-&amp;gt;System Settings-&amp;gt;HTTP Proxy打开配置。 这里主">
+<meta property="og:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int  pOne;    //指向整型常量的指针，它*指向的值不能修改 int  const pTwo;    //指向整型的常量指针，它*不能在指向别的变量，但指向（变量）的值可以修改。  const int const pThree;  //指">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-23T03:12:30.927Z">
+<meta property="og:updated_time" content="2018-01-02T12:22:32.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Stuio Proxy Settings">
-<meta name="twitter:description" content="由于项目需要，最近需要做安卓开发，因此开始了Android Studio的小白之旅。 Anndroid Studio 2.3.2 打开project，第一个要面对的就是Proxy Settings配置代理，当然也可以通过File-&amp;gt;Settings-&amp;gt;Apperarance&amp;amp;Behavior-&amp;gt;System Settings-&amp;gt;HTTP Proxy打开配置。 这里主">
+<meta name="twitter:title" content="const在函数传参时的使用">
+<meta name="twitter:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int  pOne;    //指向整型常量的指针，它*指向的值不能修改 int  const pTwo;    //指向整型的常量指针，它*不能在指向别的变量，但指向（变量）的值可以修改。  const int const pThree;  //指">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/23/Android-Stuio-Proxy-Settings/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/02/const在函数传参时的使用/"/>
 
 
 
 
 
-  <title>Android Stuio Proxy Settings | 糊糊</title>
+  <title>const在函数传参时的使用 | 糊糊</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/23/Android-Stuio-Proxy-Settings/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/const在函数传参时的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zunli Hu">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Stuio Proxy Settings</h1>
+          <h1 class="post-title" itemprop="name headline">const在函数传参时的使用</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-23T10:41:53+08:00">
-                2017-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T20:17:35+08:00">
+                2018-01-02
               </time>
             
 
@@ -300,28 +300,11 @@
       
 
       
-        <p>由于项目需要，最近需要做安卓开发，因此开始了Android Studio的小白之旅。</p>
-<p>Anndroid Studio 2.3.2</p>
-<p>打开project，第一个要面对的就是Proxy Settings配置代理，当然也可以通过File-&gt;Settings-&gt;Apperarance&amp;Behavior-&gt;System Settings-&gt;HTTP Proxy打开配置。</p>
-<p>这里主要说明两种方法。</p>
-<ol>
-<li>HTTP</li>
-</ol>
-<ul>
-<li><p>Host name: mirrors.neusoft.edu.cn</p>
-</li>
-<li><p>Port num: 80</p>
-</li>
-</ul>
-<ol>
-<li>SOCKS</li>
-</ol>
-<ul>
-<li><p>Host name: 127.0.0.1</p>
-</li>
-<li><p>Port num: 1080</p>
-</li>
-</ul>
+        <h1 id="const-指针的定义"><a href="#const-指针的定义" class="headerlink" title="const 指针的定义"></a>const 指针的定义</h1><p>声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同：</p>
+<p>const int <em> pOne;    //指向<strong>整型常量</strong>的指针，它<em>*指向的值</em></em>不能修改</p>
+<p>int <em> const pTwo;    //指向整型的<strong>常量指针</strong>，它<em>*不能在指向别的变量</em></em>，但指向（变量）的值可以修改。 </p>
+<p>const int <em>const pThree;  //指向<strong>整型常量</strong>的<strong>常量指针</strong>。它<em>*既不能再指向别的常量，指向的值也不能修改。</em></em></p>
+<p><strong>关键字const右边</strong>来确定什么被声明为常量 ，如果该关键字的右边是类型，则值是常量；如果关键字的右边是指针变量，则指针本身是常量。</p>
 
       
     </div>
@@ -339,7 +322,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
         </div>
       
@@ -352,8 +335,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/22/Hexo-GitHub搭建个人博客/" rel="next" title="Hexo + GitHub搭建个人博客">
-                <i class="fa fa-chevron-left"></i> Hexo + GitHub搭建个人博客
+              <a href="/2018/01/02/判断点在多边形内部还是外部/" rel="next" title="判断点在多边形内部还是外部">
+                <i class="fa fa-chevron-left"></i> 判断点在多边形内部还是外部
               </a>
             
           </div>
@@ -362,8 +345,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/26/深度学习中的数据预处理/" rel="prev" title="深度学习中的数据预处理">
-                深度学习中的数据预处理 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/02/const在函数传参时的使用-1/" rel="prev" title="const在函数传参时的使用">
+                const在函数传参时的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -416,8 +399,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -470,6 +462,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#const-指针的定义"><span class="nav-number">1.</span> <span class="nav-text">const 指针的定义</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
