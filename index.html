@@ -308,8 +308,10 @@ const int *const pThree;  //指向整型常量的常量指针。它既不能再�
 <h2 id="const指针和指向const的指针"><a href="#const指针和指向const的指针" class="headerlink" title="const指针和指向const的指针"></a>const指针和指向const的指针</h2><h3 id="指向const的指针"><a href="#指向const的指针" class="headerlink" title="指向const的指针"></a>指向const的指针</h3><p>指针指向的内容是不能被修改的！！</p>
 <p>两种写法：</p>
 <ul>
-<li><figure class="highlight plain"><figcaption><span>int* p```(推荐）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```int const* p</span><br></pre></td></tr></table></figure></li>
+<li><figure class="highlight plain"><figcaption><span>int* p```(推荐）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- ```int const* p</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<p>第一种可以理解为，p是一个指针，它指向的内容是const int 类型。p本身不用初始化它可以指向任何标示符，但它指向的内容是不能被改变的。</p>
 
           
         
