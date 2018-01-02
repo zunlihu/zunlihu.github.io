@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="糊糊">
 <meta property="og:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int* pOne;    //指向整型常量的指针，它指向的值不能修改 int* const pTwo;    //指向整型的常量指针，它不能在指向别的变量，但指向（变量）的值可以修改。  const int *const pThree;  //指向">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-02T14:19:23.747Z">
+<meta property="og:updated_time" content="2018-01-02T14:22:44.481Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="const在函数传参时的使用">
 <meta name="twitter:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int* pOne;    //指向整型常量的指针，它指向的值不能修改 int* const pTwo;    //指向整型的常量指针，它不能在指向别的变量，但指向（变量）的值可以修改。  const int *const pThree;  //指向">
@@ -310,17 +310,11 @@ const int *const pThree;  //指向整型常量的常量指针。它既不能再�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const int* p</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int const* p</span><br></pre></td></tr></table></figure>
 <p>第一种可以理解为，p是一个指针，它指向的内容是 <figure class="highlight plain"><figcaption><span>int``` 类型。p本身不用初始化它可以指向任何标示符，但这里它**指向的内容是不能被改变的**。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">第二种很容易被理解成是p是一个指向int的const指针（指针本身不能被修改，但这样理解是错误的，它也是表示的是**指向const的指针**（指针指向的内容是不能被修改的)，它跟第一种表达的是一个意思。</span><br><span class="line">为了避免混淆推荐大家用第一种。</span><br><span class="line"></span><br><span class="line">### const指针</span><br><span class="line">**指针本身的值是不能被修改的！！**</span><br><span class="line"></span><br><span class="line">只有一种写法：</span><br></pre></td></tr></table></figure></p>
-<p>int* const p =一个地址;<br>```</p>
-<p>这种形式可以被理解为，p是一个指针，这个指针是指向int的const指针。<strong>它指向的值是可以被改变的</strong>，如*p=3;</p>
-<p><strong>指向const的指针</strong>（指针指向的内容不能被修改）const关健字总是出现在<em>的左边；而<strong>const指针</strong>（指针本身不能被修改）const关健字总是出现在</em>的右边。那不用说两个const中间加个*肯定是指针本身和它指向的内容都是不能被改变的。</p>
-<h2 id="const修饰函数的参数"><a href="#const修饰函数的参数" class="headerlink" title="const修饰函数的参数"></a>const修饰函数的参数</h2><ul>
-<li>如果参数作输出用，不论它是什么数据类型，也不论它采用“指针传递”还是“引用传递”，都不能加const 修饰，否则该参数将<strong>失去输出功能。</strong></li>
-<li>const 只能修饰输入参数：<br>  如果输入参数采用“指针传递”，那么加const修饰可以防止意外地改动该指针，起到保护作用。<ol>
-<li>对于非内部数据类型的输入参数，应该将“值传递”的方式改为“const引用传递”，目的是提高效率。例如：<code>void Func(A a)</code> 改为<code>void Func(const A &amp;a)</code>。</li>
-<li>对于内部数据类型的输入参数，不要将“值传递”的方式改为“const引用传递”。否则既达不到提高效率的目的，又降低了函数的可理解性。例如<code>void Func(int x)</code>不应该改为<code>void Func(const int &amp;x)</code>。</li>
-</ol>
-</li>
-</ul>
+<p>int* const p =一个地址;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这种形式可以被理解为，p是一个指针，这个指针是指向int的const指针。**它指向的值是可以被改变的**，如*p=3;</span><br><span class="line"></span><br><span class="line">**指向const的指针**（指针指向的内容不能被修改）const关健字总是出现在*的左边；而**const指针**（指针本身不能被修改）const关健字总是出现在*的右边。那不用说两个const中间加个*肯定是指针本身和它指向的内容都是不能被改变的。</span><br><span class="line"></span><br><span class="line">## const修饰函数的参数</span><br><span class="line">- 如果参数作输出用，不论它是什么数据类型，也不论它采用“指针传递”还是“引用传递”，都不能加const 修饰，否则该参数将**失去输出功能。**</span><br><span class="line">- const 只能修饰输入参数：</span><br><span class="line">    如果输入参数采用“指针传递”，那么加const修饰可以防止意外地改动该指针，起到保护作用。</span><br><span class="line">    1. 对于非内部数据类型的输入参数，应该将“值传递”的方式改为“const引用传递”，目的是提高效率。例如：```void Func(A a)``` 改为```void Func(const A &amp;a)```。</span><br><span class="line">    2. 对于内部数据类型的输入参数，不要将“值传递”的方式改为“const引用传递”。否则既达不到提高效率的目的，又降低了函数的可理解性。例如```void Func(int x)```不应该改为```void Func(const int &amp;x)```。</span><br><span class="line"></span><br><span class="line">## const 修饰函数的返回值</span><br><span class="line">如果给以“指针传递”方式的函数返回值加```const``` 修饰，那么函数返回值（即指针）的内容不能被修改，该返回值只能被赋给加const 修饰的同类型指针。例如函数```const char * GetString(void);</span><br></pre></td></tr></table></figure></p>
+<p>如下语句将出现编译错误：</p>
+<figure class="highlight plain"><figcaption><span>*str </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">正确的用法是</span><br><span class="line"></span><br><span class="line">```const char *str = GetString();</span><br></pre></td></tr></table></figure>
+<p>如果返回值不是内部数据类型，将函数<code>A GetA(void)</code> 改写为<code>const A &amp; GetA(void)</code>的确能提高效率。但此时千万千万要小心，一定要搞清楚函数究竟是想返回一个对象的“拷贝”还是仅返回“别名”就可以了，否则程序会出错。</p>
+<p>函数返回值采用“引用传递”的场合并不多，这种方式一般只出现在类的赋值函数中，目的是为了实现链式表达。</p>
 <h2 id="附注："><a href="#附注：" class="headerlink" title="附注："></a>附注：</h2><p>几种函数传参方式及区别：</p>
 <ol>
 <li><p>值传递：形参是实参的拷贝，<strong>改变函数形参的值并不会影响外部实参的值；</strong></p>
@@ -493,7 +487,7 @@ const int *const pThree;  //指向整型常量的常量指针。它既不能再�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#const-指针的定义"><span class="nav-number">1.</span> <span class="nav-text">const 指针的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const指针和指向const的指针"><span class="nav-number">2.</span> <span class="nav-text">const指针和指向const的指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指向const的指针"><span class="nav-number">2.1.</span> <span class="nav-text">指向const的指针</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const修饰函数的参数"><span class="nav-number">3.</span> <span class="nav-text">const修饰函数的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附注："><span class="nav-number">4.</span> <span class="nav-text">附注：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#const-指针的定义"><span class="nav-number">1.</span> <span class="nav-text">const 指针的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const指针和指向const的指针"><span class="nav-number">2.</span> <span class="nav-text">const指针和指向const的指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指向const的指针"><span class="nav-number">2.1.</span> <span class="nav-text">指向const的指针</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附注："><span class="nav-number">3.</span> <span class="nav-text">附注：</span></a></li></ol></div>
             
 
           </div>
