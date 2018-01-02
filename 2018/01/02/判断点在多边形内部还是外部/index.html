@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://hi.csdn.net/attachment/201107/21/0_1311240376l4Rr.gif">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201107/21/0_1311240389eSmK.gif">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201107/21/0_1311240410jQIj.gif">
-<meta property="og:updated_time" content="2018-01-02T08:56:39.659Z">
+<meta property="og:updated_time" content="2018-01-02T08:57:32.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="判断点在多边形内部还是外部">
 <meta name="twitter:description" content="判断点在多边形内部还是外部对任意给的一个多边形和一个已知点，如何判断该点在多边形的内部，外部还是就在多边形上？ 如果给定的多边形是凸多边形法一： 如果点在四边形内，那么所有经过这个点的直线都会和边相交，并且一定是在两个交点之间。反之如果在四边形外，那么就有三种可能，一种是没交点，一种是一个交点，最后一种是两个交点。但因为是凸四边形所以必然不在中间。所以可以任取一条过点直线，判断该点是否在交点之间，">
@@ -311,12 +311,11 @@
 <p><strong>法一详解：</strong></p>
 <ol>
 <li>假设四边形为ABCD,给定点M(X3,Y3),过C的任意直线为a<em>（x-X3)+b</em>（y-Y3)=0。</li>
-<li>任取一条过点直线l：x = X3,分别求出l与AB,BC, CD, DA的交点，并记录下来。<ul>
+<li><p>任取一条过点直线l：x = X3,分别求出l与AB,BC, CD, DA的交点，并记录下来。</p>
+<ul>
 <li>如果交点数&lt;2,则在四边形外边</li>
-<li>如果交点数=2，设为E、F：<ul>
-<li>如果ME&lt;EF&amp;&amp;MF&lt;EF，则在四边形内部</li>
-<li>否则，在四边形外部。</li>
-</ul>
+<li><p>如果交点数=2，设为E、F：</p>
+<p>1） 如果ME&lt;EF&amp;&amp;MF&lt;EF，则在四边形内部<br>2） 否则，在四边形外部。</p>
 </li>
 </ul>
 </li>
