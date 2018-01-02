@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="糊糊">
 <meta property="og:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int* pOne;    //指向整型常量的指针，它指向的值不能修改 int* const pTwo;    //指向整型的常量指针，它不能在指向别的变量，但指向（变量）的值可以修改。  const int *const pThree;  //指向">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-02T14:22:44.481Z">
+<meta property="og:updated_time" content="2018-01-02T14:23:57.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="const在函数传参时的使用">
 <meta name="twitter:description" content="const 指针的定义声明指针时，可以在类型前或后使用关键字const，也可在两个位置都使用。例如，下面都是合法的声明，但是含义大不同： const int* pOne;    //指向整型常量的指针，它指向的值不能修改 int* const pTwo;    //指向整型的常量指针，它不能在指向别的变量，但指向（变量）的值可以修改。  const int *const pThree;  //指向">
@@ -315,6 +315,13 @@ const int *const pThree;  //指向整型常量的常量指针。它既不能再�
 <figure class="highlight plain"><figcaption><span>*str </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">正确的用法是</span><br><span class="line"></span><br><span class="line">```const char *str = GetString();</span><br></pre></td></tr></table></figure>
 <p>如果返回值不是内部数据类型，将函数<code>A GetA(void)</code> 改写为<code>const A &amp; GetA(void)</code>的确能提高效率。但此时千万千万要小心，一定要搞清楚函数究竟是想返回一个对象的“拷贝”还是仅返回“别名”就可以了，否则程序会出错。</p>
 <p>函数返回值采用“引用传递”的场合并不多，这种方式一般只出现在类的赋值函数中，目的是为了实现链式表达。</p>
+<h2 id="const修饰成员函数"><a href="#const修饰成员函数" class="headerlink" title="const修饰成员函数"></a>const修饰成员函数</h2><p>关于Const函数的几点规则：</p>
+<ol>
+<li>const对象只能访问const成员函数,而非const对象可以访问任意的成员函数,包括const成员函数.</li>
+<li>const对象的成员是不可修改的,然而const对象通过指针维护的对象却是可以修改的.</li>
+<li>const成员函数不可以修改对象的数据,不管对象是否具有const性质.它在编译时,以是否修改成员数据为依据,进行检查.</li>
+<li>然而加上mutable修饰符的数据成员,对于任何情况下通过任何手段都可修改,自然此时的const成员函数是可以修改它的</li>
+</ol>
 <h2 id="附注："><a href="#附注：" class="headerlink" title="附注："></a>附注：</h2><p>几种函数传参方式及区别：</p>
 <ol>
 <li><p>值传递：形参是实参的拷贝，<strong>改变函数形参的值并不会影响外部实参的值；</strong></p>
@@ -487,7 +494,7 @@ const int *const pThree;  //指向整型常量的常量指针。它既不能再�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#const-指针的定义"><span class="nav-number">1.</span> <span class="nav-text">const 指针的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const指针和指向const的指针"><span class="nav-number">2.</span> <span class="nav-text">const指针和指向const的指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指向const的指针"><span class="nav-number">2.1.</span> <span class="nav-text">指向const的指针</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附注："><span class="nav-number">3.</span> <span class="nav-text">附注：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#const-指针的定义"><span class="nav-number">1.</span> <span class="nav-text">const 指针的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const指针和指向const的指针"><span class="nav-number">2.</span> <span class="nav-text">const指针和指向const的指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#指向const的指针"><span class="nav-number">2.1.</span> <span class="nav-text">指向const的指针</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const修饰成员函数"><span class="nav-number">3.</span> <span class="nav-text">const修饰成员函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附注："><span class="nav-number">4.</span> <span class="nav-text">附注：</span></a></li></ol></div>
             
 
           </div>
