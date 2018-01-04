@@ -553,8 +553,7 @@ const int *const pThree;  //指向整型常量的常量指针。它既不能再�
 
       
         
-          
-            <h1 id="求斐波那契数"><a href="#求斐波那契数" class="headerlink" title="求斐波那契数"></a>求斐波那契数</h1><p><strong>题目</strong></p>
+          <h1 id="求斐波那契数列"><a href="#求斐波那契数列" class="headerlink" title="求斐波那契数列"></a>求斐波那契数列</h1><p><strong>题目</strong></p>
 <p>写一个函数，输入n,求斐波那契(Fibonacci)数列的第n项，斐波那契数列的定义如下：</p>
 <pre><code>f(n) = f(n-1) + f(n-2) n&gt;1
 f(0) = 0; f(1) = 1;
@@ -571,61 +570,14 @@ f(0) = 0; f(1) = 1;
 </code></pre><p>存在大量的重复计算！！！</p>
 <p>该算法计算量会随着n的增大而急剧增大，时间复杂度以n的指数的方式递增！！！</p>
 <h2 id="从下往上计算-实用的算法）"><a href="#从下往上计算-实用的算法）" class="headerlink" title="从下往上计算(实用的算法）"></a>从下往上计算(实用的算法）</h2><p>根据f(0)和f(1)计算f(2)，再根据f(1)和f(2)计算f(3)……以此类推计算出第n项。</p>
-<p>该算法的时间复杂度是O(n)!!!</p>
-<pre><code>long long Fibonacci(unsigned n)
-{
-    int result[2] = {0 , 1};
-    if (n&lt;2)
-         return result[n];
-
-    long long fibNMinusOne = 1;
-    long long fibNMinusTwo = 0;
-    long long fibN = 0;
-    for (unsigned int i = 2; i &lt;= n; i++)
-    {
-        fibN = fibNMinusOne + fibNMinuxTwo;
-        fibNMinusTwo = fibNMinusOne;
-        fibNMinusOne = fibN;
-    }
-    return fibN;
-}
-</code></pre><h2 id="O-logn）但是不实用的算法"><a href="#O-logn）但是不实用的算法" class="headerlink" title="O(logn）但是不实用的算法"></a>O(logn）但是不实用的算法</h2><h1 id="求斐波那契数取模"><a href="#求斐波那契数取模" class="headerlink" title="求斐波那契数取模"></a>求斐波那契数取模</h1><p>斐波那契数列如下：</p>
-<pre><code>1,1,2,3,5,8,13,21,34......
-
-其中：
-f[n]=f[n-1]+f[n-2]（n&gt;=3），
-f[1] = 1, f[2] = 1
-</code></pre><p>对给定的下标n，求解a[n]%1997的值。</p>
-<p>这个题目，主要是用到很关键的一个数学知识，<strong>求斐波那契数列的过程，可以转换为矩阵的连乘，矩阵的n次方算法又可以用分治的算法。</strong></p>
-<p>而且又有理论依据：</p>
-<pre><code>(n*m)%c=[(n%c)*(m%c)]%c
-(n+m)%c=[(n%c)+(m%c)]%c 
-</code></pre><p>所以过程中的结果可以随时取模，而不影响最终的结果。</p>
-<h2 id="斐波那契数列的矩阵连乘求法"><a href="#斐波那契数列的矩阵连乘求法" class="headerlink" title="斐波那契数列的矩阵连乘求法"></a>斐波那契数列的矩阵连乘求法</h2><p>我们知道我们若要简单计算f(n)，有一种方法就是先保存a=f(0),b=f(1)，然后每次设： </p>
-<pre><code>a&apos;=b 
-b&apos;=a+b
-</code></pre><p>并用新的a’和b’来继续这一运算。</p>
-<p>如果大家熟悉利用“矩阵”这一工具的话，就知道，如果把a、b写成一个向量[a,b]，完成上述操作相当于乘以矩阵 </p>
-<pre><code>0 1 
-1 1 
-</code></pre><p>也就是说，如果我们要求第100个fibonacci数，只需要将矩阵<br>[0,1]乘上 </p>
-<pre><code>0 1 
-1 1 
-</code></pre><p>的一百次方，再取出第一项。</p>
-<p>因为我们知道，矩阵运算满足结合律，一次次右乘那个矩阵完全可以用乘上那个矩阵的N次方代替，更进一步，那个矩阵的N次方就是这样的形式：</p>
-<pre><code>f(n-1)  f(n) 
- f(n)  f(n+1)
-</code></pre><p>而求矩阵的N次方，由于矩阵乘法满足结合律，所以我们可以用<strong>log(N)</strong>的算法求出——这个算法大家都会么？ </p>
-<p>一个是二分，一个是基于二进制的求幂。</p>
-<p>二分的原理：要求矩阵的N次方A(N)，设i=N/2</p>
-<pre><code>A(N)=A(i)*A(i)*A(1)  if N%2=1
-A(N)=A(i)*A(i)       if N%2=0
-</code></pre><p>基于二进制的原理：将N拆为二进制数，譬如13=1101那么 A^13= A^8 <em> A^4 </em> A^1 （这里^表示幂运算）。</p>
-<p>也就是说，由A^1开始，自乘得到A^2，然后自乘得到A^4，如果N对应位为1，则将这个结果乘到目标上去。</p>
-<p>这样的话，将所有乘法改为模乘，就可以得到一个较大Fibonacci数除以M的余数。</p>
-<p>若不用递归，其实类似。</p>
-
-          
+<p>该算法的时间复杂度是<strong>O(n)</strong>!!!</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/30/斐波那契数列/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
