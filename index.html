@@ -229,6 +229,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/根据网络训练时的学习曲线评估模型训练效果/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zunli Hu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="糊糊">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/08/根据网络训练时的学习曲线评估模型训练效果/" itemprop="url">根据网络训练时的学习曲线评估模型训练效果</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-08T15:40:58+08:00">
+                2018-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>当验证集准确率一直低于训练集准确率，但无明显下降趋势，这说明此时模型复杂度欠缺，模型能力有限。–欠拟合，增加层数、调整激活函数增加网络非线性、减小模型正则化等措施增大网络复杂度。</p>
+<p>当验证集准确率一直低于训练集准确率，且随着训练轮数增加有明显下降趋势。–过拟合，增大网络模型正则化削弱网络复杂度。</p>
+<p>也可对应loss的变化。</p>
+<h2 id="如何防止过拟合？"><a href="#如何防止过拟合？" class="headerlink" title="如何防止过拟合？"></a>如何防止过拟合？</h2><ul>
+<li>增大网络模型正则化</li>
+<li>early stopping</li>
+<li>增加训练数据或者尝试更多数据扩充方式</li>
+<li>dropout</li>
+</ul>
+<h2 id="随机失活-dropout"><a href="#随机失活-dropout" class="headerlink" title="随机失活 dropout"></a>随机失活 dropout</h2><p>原理：对于某层的每个神经元，在训练阶段均以概率p随机将该神经元权重置0，<strong>测试阶段所有神经元均呈激活态，</strong>但其权重需乘（1-p)以保证训练和测试阶段各自权重拥有相同的期望。</p>
+<p>由于失活的神经元无法参与到网络训练，因此每次训练（前向操作和反向操作）时，相当于面对一个全新网络。随机失活后，相当于指数级子网络的网络集成，对于提升模型泛化性效果显著。</p>
+<p>在工程实现中采用“倒置随机失活”,在训练阶段直接将随机失活后的网络响应乘以1/(1-p)，这样测试阶段不需做任何量级调整。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/02/const在函数传参时的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1171,7 +1302,7 @@ f(0) = 0; f(1) = 1;
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
