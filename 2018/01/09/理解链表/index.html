@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="deep learning," />
+  <meta name="keywords" content="data structure," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="当验证集准确率一直低于训练集准确率，但无明显下降趋势，这说明此时模型复杂度欠缺，模型能力有限。–欠拟合，增加层数、调整激活函数增加网络非线性、减小模型正则化等措施增大网络复杂度。 当验证集准确率一直低于训练集准确率，且随着训练轮数增加有明显下降趋势。–过拟合，增大网络模型正则化削弱网络复杂度。 也可对应loss的变化。 如何防止过拟合？ 增大网络模型正则化 early stopping 增加训练数">
-<meta name="keywords" content="deep learning">
+<meta name="description" content="链表是一种动态数据结构，因为在创建链表时，无须知道链表的长度。 当插入一个结点时，我们只需要为新结点分配内存，然后调整指针的指向来确保新结点被链接到链表当中。内存分配不是在创建链表时一次性完成，而是每添加一个结点分配一次内存。由于没有闲置的内存，链表的空间效率比数组高。 单链表整个链表的存取必须从头指针开始进行，头指针指示链表的第一个结点的存储位置。 区分首元结点、头结点、头指针首元结点：链表中的">
+<meta name="keywords" content="data structure">
 <meta property="og:type" content="article">
-<meta property="og:title" content="根据网络训练时的学习曲线评估模型训练效果">
-<meta property="og:url" content="http://yoursite.com/2018/01/08/根据网络训练时的学习曲线评估模型训练效果/index.html">
+<meta property="og:title" content="理解链表">
+<meta property="og:url" content="http://yoursite.com/2018/01/09/理解链表/index.html">
 <meta property="og:site_name" content="糊糊">
-<meta property="og:description" content="当验证集准确率一直低于训练集准确率，但无明显下降趋势，这说明此时模型复杂度欠缺，模型能力有限。–欠拟合，增加层数、调整激活函数增加网络非线性、减小模型正则化等措施增大网络复杂度。 当验证集准确率一直低于训练集准确率，且随着训练轮数增加有明显下降趋势。–过拟合，增大网络模型正则化削弱网络复杂度。 也可对应loss的变化。 如何防止过拟合？ 增大网络模型正则化 early stopping 增加训练数">
+<meta property="og:description" content="链表是一种动态数据结构，因为在创建链表时，无须知道链表的长度。 当插入一个结点时，我们只需要为新结点分配内存，然后调整指针的指向来确保新结点被链接到链表当中。内存分配不是在创建链表时一次性完成，而是每添加一个结点分配一次内存。由于没有闲置的内存，链表的空间效率比数组高。 单链表整个链表的存取必须从头指针开始进行，头指针指示链表的第一个结点的存储位置。 区分首元结点、头结点、头指针首元结点：链表中的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-01-08T09:19:35.194Z">
+<meta property="og:updated_time" content="2018-01-09T03:21:59.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="根据网络训练时的学习曲线评估模型训练效果">
-<meta name="twitter:description" content="当验证集准确率一直低于训练集准确率，但无明显下降趋势，这说明此时模型复杂度欠缺，模型能力有限。–欠拟合，增加层数、调整激活函数增加网络非线性、减小模型正则化等措施增大网络复杂度。 当验证集准确率一直低于训练集准确率，且随着训练轮数增加有明显下降趋势。–过拟合，增大网络模型正则化削弱网络复杂度。 也可对应loss的变化。 如何防止过拟合？ 增大网络模型正则化 early stopping 增加训练数">
+<meta name="twitter:title" content="理解链表">
+<meta name="twitter:description" content="链表是一种动态数据结构，因为在创建链表时，无须知道链表的长度。 当插入一个结点时，我们只需要为新结点分配内存，然后调整指针的指向来确保新结点被链接到链表当中。内存分配不是在创建链表时一次性完成，而是每添加一个结点分配一次内存。由于没有闲置的内存，链表的空间效率比数组高。 单链表整个链表的存取必须从头指针开始进行，头指针指示链表的第一个结点的存储位置。 区分首元结点、头结点、头指针首元结点：链表中的">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/08/根据网络训练时的学习曲线评估模型训练效果/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/09/理解链表/"/>
 
 
 
 
 
-  <title>根据网络训练时的学习曲线评估模型训练效果 | 糊糊</title>
+  <title>理解链表 | 糊糊</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/根据网络训练时的学习曲线评估模型训练效果/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/09/理解链表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zunli Hu">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">根据网络训练时的学习曲线评估模型训练效果</h1>
+          <h1 class="post-title" itemprop="name headline">理解链表</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-08T15:40:58+08:00">
-                2018-01-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-09T11:01:39+08:00">
+                2018-01-09
               </time>
             
 
@@ -300,19 +300,18 @@
       
 
       
-        <p>当验证集准确率一直低于训练集准确率，但无明显下降趋势，这说明此时模型复杂度欠缺，模型能力有限。–欠拟合，增加层数、调整激活函数增加网络非线性、减小模型正则化等措施增大网络复杂度。</p>
-<p>当验证集准确率一直低于训练集准确率，且随着训练轮数增加有明显下降趋势。–过拟合，增大网络模型正则化削弱网络复杂度。</p>
-<p>也可对应loss的变化。</p>
-<h2 id="如何防止过拟合？"><a href="#如何防止过拟合？" class="headerlink" title="如何防止过拟合？"></a>如何防止过拟合？</h2><ul>
-<li>增大网络模型正则化</li>
-<li>early stopping</li>
-<li>增加训练数据或者尝试更多数据扩充方式</li>
-<li>dropout</li>
-</ul>
-<h2 id="随机失活-dropout"><a href="#随机失活-dropout" class="headerlink" title="随机失活 dropout"></a>随机失活 dropout</h2><p>原理：对于某层的每个神经元，在训练阶段均以概率p随机将该神经元权重置0，<strong>测试阶段所有神经元均呈激活态，</strong>但其权重需乘（1-p)以保证训练和测试阶段各自权重拥有相同的期望。</p>
-<p>由于失活的神经元无法参与到网络训练，因此每次训练（前向操作和反向操作）时，相当于面对一个全新网络。随机失活后，相当于指数级子网络的网络集成，对于提升模型泛化性效果显著。</p>
-<p>在工程实现中采用“倒置随机失活”,在训练阶段直接将随机失活后的网络响应乘以1/(1-p)，这样测试阶段不需做任何量级调整。</p>
-
+        <p>链表是一种动态数据结构，因为在创建链表时，无须知道链表的长度。</p>
+<p>当插入一个结点时，我们只需要为新结点分配内存，然后调整指针的指向来确保新结点被链接到链表当中。内存分配不是在创建链表时一次性完成，而是每添加一个结点分配一次内存。<br>由于没有闲置的内存，链表的空间效率比数组高。</p>
+<h2 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h2><p>整个链表的存取必须从头指针开始进行，头指针指示链表的第一个结点的存储位置。</p>
+<h3 id="区分首元结点、头结点、头指针"><a href="#区分首元结点、头结点、头指针" class="headerlink" title="区分首元结点、头结点、头指针"></a>区分首元结点、头结点、头指针</h3><p>首元结点：链表中的第一个结点<br>头结点：首元结点之前附设的结点<br>头指针：指向链表中第一个结点的指针。若有头结点，则指向头结点，若无，则指向首元结点。</p>
+<h3 id="ListNode"><a href="#ListNode" class="headerlink" title="ListNode"></a>ListNode</h3><p>ListNode为结构体，定义如下：</p>
+<pre><code>struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode(int x): val(x), next(NULL){};
+}
+</code></pre>
       
     </div>
     
@@ -329,7 +328,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+            <a href="/tags/data-structure/" rel="tag"># data structure</a>
           
         </div>
       
@@ -342,8 +341,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/02/const在函数传参时的使用/" rel="next" title="const在函数传参时的使用">
-                <i class="fa fa-chevron-left"></i> const在函数传参时的使用
+              <a href="/2018/01/08/根据网络训练时的学习曲线评估模型训练效果/" rel="next" title="根据网络训练时的学习曲线评估模型训练效果">
+                <i class="fa fa-chevron-left"></i> 根据网络训练时的学习曲线评估模型训练效果
               </a>
             
           </div>
@@ -352,8 +351,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/09/理解链表/" rel="prev" title="理解链表">
-                理解链表 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/13/微软（苏州）面经（一）/" rel="prev" title="微软（苏州）面经（一）">
+                微软（苏州）面经（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -479,7 +478,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何防止过拟合？"><span class="nav-number">1.</span> <span class="nav-text">如何防止过拟合？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机失活-dropout"><span class="nav-number">2.</span> <span class="nav-text">随机失活 dropout</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单链表"><span class="nav-number">1.</span> <span class="nav-text">单链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#区分首元结点、头结点、头指针"><span class="nav-number">1.1.</span> <span class="nav-text">区分首元结点、头结点、头指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ListNode"><span class="nav-number">1.2.</span> <span class="nav-text">ListNode</span></a></li></ol></li></ol></div>
             
 
           </div>
